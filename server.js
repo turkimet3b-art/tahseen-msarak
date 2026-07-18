@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const db = require('./db');
 
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
@@ -18,6 +19,11 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/trainee', traineeRoutes);
 app.use('/api/instructor', instructorRoutes);
 app.use('/api/admin', adminRoutes);
+
+app.get('/api/settings', (req, res) => {
+    const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
+    res.json({ settings: row ? JSON.parse(row.data) : {} });
+});
 
 app.get('/api/health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 

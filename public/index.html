@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مركز تحسين مسارك للتدريب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#0f1c3f;
+  --navy2:#16244d;
+  --navy3:#1c2f66;
+  --blue:#2f5fdd;
+  --blue-dark:#1e40af;
+  --blue-light:#eaf1fd;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#1c2436;
+  --muted:#6b7280;
+  --border:#e6e9f0;
+  --green:#16a34a; --green-bg:#dcfce7;
+  --amber:#d97706; --amber-bg:#fef3c7;
+  --red:#dc2626; --red-bg:#fee2e2;
+  --purple:#7c3aed; --purple-bg:#ede9fe;
+  --teal:#0f9d78; --teal-bg:#d7f5ec;
+  --radius:12px;
+  --shadow:0 1px 3px rgba(16,24,64,.07), 0 1px 2px rgba(16,24,64,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Tajawal',sans-serif;direction:rtl;background:var(--bg);color:var(--text);line-height:1.6;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;line-height:1;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button,input,select{font-family:inherit;font-size:14px;}
+button{cursor:pointer;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;border:1px solid transparent;font-weight:700;font-size:14px;transition:.15s;white-space:nowrap;}
+.btn-primary{background:var(--blue);color:#fff;}
+.btn-primary:hover{background:var(--blue-dark);}
+.btn-outline{background:#fff;color:var(--navy);border-color:var(--border);}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+.btn-ghost-light{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.35);}
+.btn-ghost-light:hover{background:rgba(255,255,255,.18);}
+.btn-block{width:100%;justify-content:center;}
+.btn-sm{padding:6px 14px;font-size:13px;}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;}
+.card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);}
+.section-title{font-size:26px;font-weight:800;color:var(--navy);}
+.section-sub{color:var(--muted);font-size:14px;margin-top:6px;}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-thumb{background:#c7cede;border-radius:8px;}
+
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;color:var(--navy);cursor:pointer;}
+.logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--navy3));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+.main-nav{display:flex;align-items:center;gap:8px;}
+.main-nav a{padding:10px 14px;border-radius:8px;font-weight:500;color:var(--text);font-size:14.5px;}
+.main-nav a.active{color:var(--blue);font-weight:700;}
+.main-nav a:hover{background:var(--bg);}
+.header-actions{display:flex;align-items:center;gap:10px;}
+
+.hero{position:relative;background:linear-gradient(120deg,var(--navy) 0%,#132658 55%,var(--navy3) 100%);color:#fff;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 15% 30%,rgba(47,95,221,.35),transparent 40%),radial-gradient(circle at 85% 75%,rgba(47,95,221,.25),transparent 45%);}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:64px 24px;max-width:1200px;margin:0 auto;}
+.hero h1{font-size:42px;font-weight:800;line-height:1.3;}
+.hero h1 span{color:#7fa2ff;}
+.hero p{margin-top:16px;color:#c6cee6;font-size:16px;max-width:480px;}
+.hero-actions{display:flex;gap:12px;margin-top:28px;}
+.hero-visual{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;}
+
+.features-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:40px 0;}
+.feature-item{display:flex;align-items:center;gap:14px;}
+.feature-icon{width:52px;height:52px;border-radius:12px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.feature-item h4{font-size:15px;font-weight:700;}
+.feature-item p{font-size:13px;color:var(--muted);margin-top:2px;}
+
+.section{padding:48px 0;}
+.section-head{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:32px;}
+
+.course-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.course-card{overflow:hidden;display:flex;flex-direction:column;transition:.15s;cursor:pointer;}
+.course-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+.course-thumb{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;}
+.course-thumb .material-symbols-outlined{font-size:52px;}
+.course-cat-badge{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.92);}
+.course-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.course-title{font-size:15px;font-weight:700;line-height:1.4;min-height:42px;}
+.course-meta{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);}
+.course-meta .material-symbols-outlined{font-size:16px;}
+.course-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--border);}
+.course-price{font-size:16px;font-weight:800;color:var(--navy);}
+.course-price span{font-size:12px;font-weight:500;color:var(--muted);}
+
+.site-footer{background:var(--navy);color:#aab2c9;padding:52px 0 0;margin-top:20px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:36px;}
+.footer-grid h5{color:#fff;font-size:15px;font-weight:700;margin-bottom:14px;}
+.footer-grid p{font-size:13px;line-height:1.9;}
+.footer-grid ul{list-style:none;font-size:13.5px;display:flex;flex-direction:column;gap:10px;}
+.footer-contact{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:12px;}
+.footer-social{display:flex;gap:10px;margin-top:16px;}
+.footer-social a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:13px;}
+
+.filters-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;padding:16px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);}
+.filters-bar input, .filters-bar select{height:40px;border:1px solid var(--border);border-radius:8px;padding:0 12px;background:#fff;}
+.filters-bar input{flex:1;min-width:200px;}
+.search-wrap{position:relative;flex:1;min-width:220px;}
+.search-wrap .material-symbols-outlined{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:20px;}
+.search-wrap input{width:100%;padding-right:40px;}
+.results-count{color:var(--muted);font-size:13.5px;margin-bottom:16px;}
+
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:18px;display:flex;gap:6px;align-items:center;}
+.breadcrumb a:hover{color:var(--blue);}
+
+.detail-hero{background:var(--navy);color:#fff;padding:36px 0;}
+.detail-grid{display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start;margin-top:-28px;padding-bottom:48px;}
+.detail-tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.detail-tab{padding:12px 16px;font-weight:700;font-size:14px;color:var(--muted);border-bottom:2px solid transparent;}
+.detail-tab.active{color:var(--blue);border-color:var(--blue);}
+.lesson-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;}
+.lesson-row .l-left{display:flex;align-items:center;gap:12px;}
+.lesson-num{width:30px;height:30px;border-radius:8px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;}
+.review-item{padding:16px 0;border-bottom:1px solid var(--border);}
+.review-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.avatar-circle{width:38px;height:38px;border-radius:50%;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+.stars{color:#f59e0b;font-size:14px;}
+.purchase-card{position:sticky;top:90px;padding:20px;}
+.purchase-price{font-size:30px;font-weight:800;color:var(--navy);}
+.purchase-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:18px 0;font-size:13.5px;color:var(--text);}
+.purchase-list li{display:flex;align-items:center;gap:8px;}
+.purchase-list .material-symbols-outlined{color:var(--green);font-size:18px;}
+
+.login-wrap{min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg);}
+.login-card{width:100%;max-width:430px;padding:34px;text-align:center;}
+.auth-toggle{display:flex;background:var(--bg);border-radius:10px;padding:4px;margin:18px 0;}
+.auth-toggle button{flex:1;padding:9px;border-radius:8px;background:transparent;font-weight:700;font-size:13.5px;color:var(--muted);}
+.auth-toggle button.active{background:#fff;color:var(--blue);box-shadow:var(--shadow);}
+.role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
+.role-btn{padding:12px 6px;border:1.5px solid var(--border);border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);}
+.role-btn .material-symbols-outlined{font-size:22px;}
+.role-btn.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);}
+.login-field{text-align:right;margin-bottom:14px;}
+.login-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;}
+.login-field input{width:100%;height:42px;border:1px solid var(--border);border-radius:8px;padding:0 14px;}
+.auth-error{background:var(--red-bg);color:var(--red);font-size:13px;font-weight:700;padding:10px;border-radius:8px;margin-bottom:14px;text-align:right;}
+.demo-hint{background:var(--blue-light);color:var(--blue-dark);font-size:12.5px;padding:10px 12px;border-radius:8px;margin-top:16px;text-align:right;line-height:1.9;}
+
+.dash-shell{display:flex;min-height:100vh;align-items:stretch;}
+.dash-sidebar{width:250px;background:var(--navy);color:#aab3cc;flex-shrink:0;display:flex;flex-direction:column;padding:20px 14px;}
+.dash-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:14.5px;padding:6px 8px 22px;cursor:pointer;}
+.dash-nav{display:flex;flex-direction:column;gap:4px;flex:1;}
+.dash-nav a{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:9px;font-size:14px;font-weight:500;color:#aab3cc;}
+.dash-nav a .material-symbols-outlined{font-size:20px;}
+.dash-nav a:hover{background:rgba(255,255,255,.06);color:#fff;}
+.dash-nav a.active{background:var(--blue);color:#fff;}
+.dash-nav a.logout{margin-top:10px;color:#f3a3a3;}
+.dash-main{flex:1;background:var(--bg);padding:26px 30px;min-width:0;}
+.dash-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
+.dash-topbar h2{font-size:19px;font-weight:800;}
+.dash-user{display:flex;align-items:center;gap:10px;}
+.dash-user .avatar-circle{background:var(--navy);color:#fff;}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
+.stat-card{padding:18px;}
+.stat-card .lbl{font-size:13px;color:var(--muted);font-weight:500;}
+.stat-card .val{font-size:24px;font-weight:800;margin:8px 0 4px;color:var(--navy);}
+.stat-card .delta{font-size:12.5px;font-weight:700;}
+.delta.up{color:var(--green);}
+.delta.down{color:var(--red);}
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:20px;}
+.panel{padding:18px;}
+.panel h3{font-size:15px;font-weight:700;margin-bottom:14px;}
+table.dt{width:100%;border-collapse:collapse;font-size:13.5px;}
+table.dt th{text-align:right;color:var(--muted);font-weight:700;font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--border);}
+table.dt td{padding:12px 10px;border-bottom:1px solid var(--border);}
+table.dt tr:last-child td{border-bottom:none;}
+.status-pill{padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;}
+.legend-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-top:8px;}
+.legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-left:8px;}
+.empty-hint{color:var(--muted);font-size:13px;text-align:center;padding:24px 0;}
+
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.profile-panel{padding:20px;text-align:center;}
+.profile-panel .avatar-circle{width:64px;height:64px;font-size:20px;margin:0 auto 10px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:12px;}
+.cal-grid .cal-day-name{color:var(--muted);font-weight:700;padding:4px 0;}
+.cal-grid .cal-cell{padding:6px 0;border-radius:6px;}
+.cal-grid .cal-cell.today{background:var(--blue);color:#fff;font-weight:700;}
+.cal-grid .cal-cell.has-session{box-shadow:inset 0 0 0 1.5px var(--blue);}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:13.5px;font-weight:700;}
+.progress-row{margin-bottom:14px;}
+.progress-row .p-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.progress-bar-track{height:7px;background:var(--bg);border-radius:99px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--blue);border-radius:99px;}
+.activity-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.activity-item:last-child{border-bottom:none;}
+.activity-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:6px;flex-shrink:0;}
+.session-card{padding:18px;}
+.session-badge{display:flex;align-items:center;gap:10px;background:var(--blue-light);color:var(--blue);padding:10px;border-radius:10px;margin-bottom:12px;}
+.cert-card{padding:16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;}
+.cert-icon{width:52px;height:52px;border-radius:50%;background:var(--amber-bg);color:var(--amber);display:flex;align-items:center;justify-content:center;}
+.notif-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.notif-item:last-child{border-bottom:none;}
+.notif-icon{width:32px;height:32px;border-radius:8px;background:var(--blue-light);color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;z-index:200;box-shadow:0 10px 25px rgba(0,0,0,.2);display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .2s;}
+.toast.show{opacity:1;}
+.toast.error{background:var(--red);}
+.loading-block{padding:80px 0;text-align:center;color:var(--muted);}
+.spin{animation:spin 1s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;}
+  .features-row{grid-template-columns:repeat(2,1fr);}
+  .course-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .detail-grid{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .two-col{grid-template-columns:1fr;}
+  .three-col{grid-template-columns:1fr;}
+  .main-nav{display:none;}
+  .dash-sidebar{width:74px;}
+  .dash-sidebar .lbl-text{display:none;}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const API_BASE = '/api';
+const CATS = {
+  'science': {name:'العلوم والهندسة', color:'#2f5fdd', bg:'#eaf1fd'},
+  'industrial': {name:'القطاع الصناعي', color:'#0f9d78', bg:'#d7f5ec'},
+  'pm': {name:'إدارة المشاريع', color:'#d97706', bg:'#fef3c7'},
+  'safety': {name:'السلامة المهنية', color:'#7c3aed', bg:'#ede9fe'}
+};
+let token = localStorage.getItem('tm_token') || null;
+let currentUser = null;
+try { currentUser = JSON.parse(localStorage.getItem('tm_user') || 'null'); } catch(e) { currentUser = null; }
+let allCourses = [];
+
+const state = { view:'home', courseId:1, detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'}, authMode:'login', regRole:'trainee' };
+const charts = {};
+
+async function api(path, opts){
+  opts = opts || {};
+  const headers = Object.assign({'Content-Type':'application/json'}, opts.headers || {});
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  const res = await fetch(API_BASE + path, Object.assign({}, opts, { headers: headers }));
+  let data = {};
+  try { data = await res.json(); } catch(e) {}
+  if (!res.ok) throw new Error(data.error || 'حدث خطأ غير متوقع، حاول مرة أخرى');
+  return data;
+}
+
+function nav(view, extra){ if(extra) Object.assign(state, extra); state.view = view; render(); window.scrollTo(0,0); }
+function logout(){ token=null; currentUser=null; localStorage.removeItem('tm_token'); localStorage.removeItem('tm_user'); nav('home'); }
+function showToast(msg, isError){
+  const t = document.createElement('div');
+  t.className = 'toast' + (isError?' error':'');
+  t.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px">'+(isError?'error':'check_circle')+'</span>' + msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),250); }, 2600);
+}
+function stars(r){
+  const full = Math.round(r);
+  let s='';
+  for(let i=0;i<5;i++) s += '<span class="material-symbols-outlined" style="font-size:15px">' + (i<full?'star':'star_outline') + '</span>';
+  return s;
+}
+function money(n){ return Number(n||0).toLocaleString('ar-SA'); }
+function icon(name, size){ return '<span class="material-symbols-outlined" style="font-size:'+(size||22)+'px">'+name+'</span>'; }
+function initials(name){ return (name||'').trim().split(' ').map(w=>w[0]).join('').slice(0,2); }
+
+function header(activePage){
+  const loggedActions = currentUser
+    ? '<button class="btn btn-outline" onclick="nav(currentUser.role)">'+icon('dashboard',18)+' لوحة التحكم</button><button class="btn btn-primary" onclick="logout()">'+icon('logout',18)+' خروج</button>'
+    : '<button class="btn btn-primary" onclick="nav(\'login\')">'+icon('login',18)+' تسجيل الدخول</button>';
+  return `
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo" onclick="nav('home')">
+        <div class="logo-mark">${icon('school',20)}</div>
+        <span>مركز تحسين مسارك<br><small style="font-weight:500;color:var(--muted);font-size:11px">للتدريب</small></span>
+      </div>
+      <nav class="main-nav">
+        <a class="${activePage==='home'?'active':''}" onclick="nav('home')">الرئيسية</a>
+        <a class="${activePage==='courses'?'active':''}" onclick="nav('courses')">الدورات</a>
+        <a onclick="nav('home');setTimeout(()=>document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'}),50)">عن المركز</a>
+        <a onclick="nav('home');setTimeout(()=>document.getElementById('contact-section')?.scrollIntoView({behavior:'smooth'}),50)">تواصل معنا</a>
+      </nav>
+      <div class="header-actions">${loggedActions}</div>
+    </div>
+  </header>`;
+}
+
+function footer(){
+  return `
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h5>مركز تحسين مسارك للتدريب</h5>
+          <p>متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي لتطوير مهاراتك وبناء مستقبلك المهني.</p>
+          <div class="footer-social">
+            <a href="#">${icon('link',16)}</a>
+            <a href="#">${icon('alternate_email',16)}</a>
+            <a href="#">${icon('photo_camera',16)}</a>
+            <a href="#">${icon('groups',16)}</a>
+          </div>
+        </div>
+        <div>
+          <h5>الدورات</h5>
+          <ul>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'science'}})">العلوم والهندسة</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'industrial'}})">القطاع الصناعي</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'pm'}})">إدارة المشاريع</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'safety'}})">السلامة المهنية</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>روابط سريعة</h5>
+          <ul>
+            <li><a onclick="nav('home')">الرئيسية</a></li>
+            <li><a onclick="nav('courses')">الدورات</a></li>
+            <li><a onclick="nav('login')">لوحة التحكم</a></li>
+            <li><a id="contact-section">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div id="about-section">
+          <h5>تواصل معنا</h5>
+          <div class="footer-contact">${icon('call',16)} +966 50 123 4567</div>
+          <div class="footer-contact">${icon('mail',16)} info@tahseenmsarak.com</div>
+          <div class="footer-contact">${icon('location_on',16)} الرياض، المملكة العربية السعودية</div>
+        </div>
+      </div>
+      <div class="footer-bottom">مركز تحسين مسارك للتدريب © 2026. جميع الحقوق محفوظة.</div>
+    </div>
+  </footer>`;
+}
+
+function courseThumb(c, big){
+  const cc = CATS[c.cat];
+  return `<div class="course-thumb" style="background:${cc.bg};color:${cc.color}">
+    ${icon(c.icon, big?70:52)}
+    ${!big?`<span class="badge course-cat-badge" style="color:${cc.color}">${cc.name}</span>`:''}
+  </div>`;
+}
+
+function courseCard(c){
+  const cc = CATS[c.cat];
+  return `
+  <div class="card course-card" onclick="nav('courseDetail',{courseId:${c.id},detailTab:'content'})">
+    ${courseThumb(c)}
+    <div class="course-body">
+      <div class="badge" style="background:${cc.bg};color:${cc.color};align-self:flex-start">${cc.name}</div>
+      <div class="course-title">${c.title}</div>
+      <div class="course-meta">
+        ${icon('schedule',16)} ${c.duration}
+        ${icon('signal_cellular_alt',16)} ${c.level}
+      </div>
+      <div class="course-meta">${stars(c.rating)} <span>${c.rating}</span> · ${icon('group',16)} ${c.students}</div>
+      <div class="course-foot">
+        <div class="course-price">${money(c.price)} <span>ر.س</span></div>
+        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();quickEnroll(${c.id})">${icon('shopping_cart',16)} شراء الآن</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function quickEnroll(courseId){
+  if (!currentUser) { showToast('يرجى تسجيل الدخول كمتدرب أولاً', true); nav('login'); return; }
+  if (currentUser.role !== 'trainee') { showToast('التسجيل في الدورات متاح لحسابات المتدربين فقط', true); return; }
+  try {
+    await api('/courses/' + courseId + '/enroll', { method:'POST' });
+    showToast('تمت إضافة الدورة إلى حسابك بنجاح');
+    await loadCourses();
+    if (state.view === 'courses') renderCoursesGrid();
+  } catch(e) { showToast(e.message, true); }
+}
+
+async function loadCourses(){
+  const data = await api('/courses');
+  allCourses = data.courses;
+}
+
+async function viewHome(){
+  if (!allCourses.length) await loadCourses();
+  const featured = allCourses.slice(0,4);
+  return `
+  ${header('home')}
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>مركز تحسين <span>مسارك</span> للتدريب</h1>
+        <p>متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي، بمحتوى معتمد ومدربين خبراء لتطوير مهاراتك المهنية.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="nav('courses')">${icon('search',18)} استكشف الدورات</button>
+          <button class="btn btn-ghost-light" onclick="document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})">عن المركز</button>
+        </div>
+      </div>
+      <div class="hero-visual">${icon('engineering',120)}</div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="features-row">
+      <div class="feature-item"><div class="feature-icon">${icon('support_agent')}</div><div><h4>دعم مستمر</h4><p>نرافقك في رحلتك التعليمية</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('workspace_premium')}</div><div><h4>محتوى احترافي</h4><p>مناهج حديثة ومعتمدة عالمياً</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('verified')}</div><div><h4>شهادات معتمدة</h4><p>تعزز مسارك المهني</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('groups')}</div><div><h4>مدربون معتمدون</h4><p>خبرة عملية ومهارات تدريبية عالية</p></div></div>
+    </div>
+  </div>
+  <section class="section" style="background:#fff">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-title">الدورات المميزة</div>
+        <div class="section-sub">اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة</div>
+      </div>
+      <div class="course-grid">${featured.map(courseCard).join('')}</div>
+      <div style="text-align:center;margin-top:28px"><button class="btn btn-outline" onclick="nav('courses')">عرض جميع الدورات ${icon('arrow_back',18)}</button></div>
+    </div>
+  </section>
+  ${footer()}
+  `;
+}
+
+function updateFilters(){
+  state.filters.q = document.getElementById('searchInput').value;
+  state.filters.cat = document.getElementById('categorySelect').value;
+  state.filters.level = document.getElementById('levelSelect').value;
+  state.filters.sort = document.getElementById('sortSelect').value;
+  renderCoursesGrid();
+}
+
+function filteredCourses(){
+  let list = allCourses.filter(c=>{
+    const q = state.filters.q.trim();
+    if(q && !c.title.includes(q) && !c.instructor.includes(q)) return false;
+    if(state.filters.cat!=='all' && c.cat!==state.filters.cat) return false;
+    if(state.filters.level!=='all' && c.level!==state.filters.level) return false;
+    return true;
+  });
+  if(state.filters.sort==='priceAsc') list.sort((a,b)=>a.price-b.price);
+  else if(state.filters.sort==='priceDesc') list.sort((a,b)=>b.price-a.price);
+  else if(state.filters.sort==='rating') list.sort((a,b)=>b.rating-a.rating);
+  else list.sort((a,b)=>b.students-a.students);
+  return list;
+}
+
+function renderCoursesGrid(){
+  const list = filteredCourses();
+  const countEl = document.getElementById('resultsCount');
+  const gridEl = document.getElementById('coursesGrid');
+  if (!countEl || !gridEl) return;
+  countEl.textContent = `عرض ${list.length} من أصل ${allCourses.length} دورة`;
+  gridEl.innerHTML = list.length
+    ? list.map(courseCard).join('')
+    : `<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0">${icon('search_off',34)}<div style="margin-top:8px">لا توجد دورات مطابقة لبحثك</div></div>`;
+}
+
+async function viewCourses(){
+  if (!allCourses.length) await loadCourses();
+  return `
+  ${header('courses')}
+  <div class="container" style="padding-top:24px">
+    <div class="breadcrumb"><a onclick="nav('home')">الرئيسية</a> ${icon('chevron_left',16)} <span>الدورات</span></div>
+    <div class="section-head" style="align-items:flex-start;text-align:right;margin-bottom:20px">
+      <div class="section-title">جميع الدورات التدريبية</div>
+      <div class="section-sub">تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي</div>
+    </div>
+    <div class="filters-bar">
+      <div class="search-wrap">
+        <input id="searchInput" type="text" placeholder="ابحث عن دورة أو مدرب..." value="${state.filters.q}" oninput="updateFilters()">
+        <span class="material-symbols-outlined">search</span>
+      </div>
+      <select id="categorySelect" onchange="updateFilters()">
+        <option value="all" ${state.filters.cat==='all'?'selected':''}>كل التصنيفات</option>
+        ${Object.entries(CATS).map(([k,v])=>`<option value="${k}" ${state.filters.cat===k?'selected':''}>${v.name}</option>`).join('')}
+      </select>
+      <select id="levelSelect" onchange="updateFilters()">
+        <option value="all" ${state.filters.level==='all'?'selected':''}>كل المستويات</option>
+        <option value="مبتدئ" ${state.filters.level==='مبتدئ'?'selected':''}>مبتدئ</option>
+        <option value="متوسط" ${state.filters.level==='متوسط'?'selected':''}>متوسط</option>
+        <option value="متقدم" ${state.filters.level==='متقدم'?'selected':''}>متقدم</option>
+      </select>
+      <select id="sortSelect" onchange="updateFilters()">
+        <option value="popular" ${state.filters.sort==='popular'?'selected':''}>الأكثر شهرة</option>
+        <option value="priceAsc" ${state.filters.sort==='priceAsc'?'selected':''}>السعر: من الأقل</option>
+        <option value="priceDesc" ${state.filters.sort==='priceDesc'?'selected':''}>السعر: من الأعلى</option>
+        <option value="rating" ${state.filters.sort==='rating'?'selected':''}>الأعلى تقييماً</option>
+      </select>
+    </div>
+    <div class="results-count" id="resultsCount"></div>
+    <div class="course-grid" id="coursesGrid" style="margin-bottom:48px"></div>
+  </div>
+  ${footer()}
+  `;
+}
+
+async function viewCourseDetail(){
+  let data;
+  try { data = await api('/courses/' + state.courseId); }
+  catch(e) { return `${header('courses')}<div class="container" style="padding:60px 0;text-align:center;color:var(--muted)">الدورة غير موجودة</div>${footer()}`; }
+  const c = data.course;
+  const cc = CATS[c.cat];
+  const modules = data.modules;
+  const reviews = data.reviews;
+  if (!allCourses.length) await loadCourses();
+  const related = allCourses.filter(x=>x.cat===c.cat && x.id!==c.id).slice(0,4);
+  return `
+  ${header('courses')}
+  <section class="detail-hero">
+    <div class="container">
+      <div class="breadcrumb" style="color:#c6cee6"><a onclick="nav('home')" style="color:#c6cee6">الرئيسية</a> ${icon('chevron_left',16)} <a onclick="nav('courses')" style="color:#c6cee6">الدورات</a> ${icon('chevron_left',16)} <span>${c.title}</span></div>
+      <div class="badge" style="background:${cc.bg};color:${cc.color};margin-bottom:12px">${cc.name}</div>
+      <div style="font-size:26px;font-weight:800;max-width:640px">${c.title}</div>
+      <div style="display:flex;gap:18px;margin-top:14px;flex-wrap:wrap;font-size:13.5px;color:#c6cee6">
+        <span>${stars(c.rating)} ${c.rating}</span>
+        <span>${icon('group',16)} ${c.students} متدرب</span>
+        <span>${icon('person',16)} ${c.instructor}</span>
+        <span>${icon('schedule',16)} ${c.duration}</span>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="detail-grid">
+      <div>
+        <div class="card" style="padding:22px">
+          <div class="detail-tabs">
+            <div class="detail-tab ${state.detailTab==='content'?'active':''}" onclick="state.detailTab='content';render()">محتوى الدورة</div>
+            <div class="detail-tab ${state.detailTab==='desc'?'active':''}" onclick="state.detailTab='desc';render()">نظرة عامة</div>
+            <div class="detail-tab ${state.detailTab==='reviews'?'active':''}" onclick="state.detailTab='reviews';render()">التقييمات (${reviews.length})</div>
+          </div>
+          ${state.detailTab==='content' ? `
+            <div>${modules.map((m,i)=>`
+              <div class="lesson-row">
+                <div class="l-left"><div class="lesson-num">${i+1}</div><div>${m}</div></div>
+                <div style="color:var(--muted);font-size:13px">${icon('play_circle',18)} ${5+i*3} د</div>
+              </div>`).join('')}
+            </div>` : ''}
+          ${state.detailTab==='desc' ? `
+            <p style="color:var(--text);font-size:14.5px;line-height:2">${c.desc}</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:13.5px">${icon('signal_cellular_alt',18)} المستوى: ${c.level}</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13.5px">${icon('schedule',18)} المدة: ${c.duration}</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13.5px">${icon('language',18)} اللغة: العربية</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13.5px">${icon('workspace_premium',18)} شهادة إتمام معتمدة</div>
+            </div>` : ''}
+          ${state.detailTab==='reviews' ? `
+            <div>${reviews.length ? reviews.map(r=>`
+              <div class="review-item">
+                <div class="review-head"><div class="avatar-circle">${initials(r.name)}</div><div><div style="font-weight:700;font-size:13.5px">${r.name}</div><div class="stars">${stars(r.rating)}</div></div></div>
+                <p style="font-size:13.5px;color:var(--text)">${r.text||''}</p>
+              </div>`).join('') : `<div class="empty-hint">لا توجد تقييمات بعد على هذه الدورة</div>`}
+            </div>` : ''}
+        </div>
+      </div>
+      <div>
+        <div class="card purchase-card">
+          ${courseThumb(c,true)}
+          <div class="purchase-price" style="margin-top:16px">${money(c.price)} <span style="font-size:14px;font-weight:500;color:var(--muted)">ر.س</span></div>
+          <ul class="purchase-list">
+            <li>${icon('check_circle',18)} وصول كامل مدى الحياة للمحتوى</li>
+            <li>${icon('check_circle',18)} شهادة إتمام معتمدة</li>
+            <li>${icon('check_circle',18)} تدريب عملي وتطبيقات واقعية</li>
+            <li>${icon('check_circle',18)} دعم فني ومتابعة من المدرب</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="quickEnroll(${c.id})">${icon('shopping_cart',18)} شراء الآن</button>
+        </div>
+      </div>
+    </div>
+    ${related.length ? `
+    <div style="padding-bottom:48px">
+      <div class="section-title" style="font-size:20px;margin-bottom:16px">دورات ذات صلة</div>
+      <div class="course-grid">${related.map(courseCard).join('')}</div>
+    </div>` : ''}
+  </div>
+  ${footer()}
+  `;
+}
+
+function selectRegRole(r){ state.regRole = r; render(); }
+function setAuthMode(m){ state.authMode = m; state.authError = null; render(); }
+
+async function doLogin(ev){
+  ev.preventDefault();
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  try {
+    const data = await api('/auth/login', { method:'POST', body: JSON.stringify({ email, password }) });
+    token = data.token; currentUser = data.user;
+    localStorage.setItem('tm_token', token);
+    localStorage.setItem('tm_user', JSON.stringify(currentUser));
+    showToast('مرحباً بعودتك، ' + currentUser.name);
+    nav(currentUser.role);
+  } catch(e) {
+    state.authError = e.message;
+    render();
+  }
+}
+
+async function doRegister(ev){
+  ev.preventDefault();
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const password = document.getElementById('regPassword').value;
+  try {
+    const data = await api('/auth/register', { method:'POST', body: JSON.stringify({ name, email, phone, password, role: state.regRole }) });
+    token = data.token; currentUser = data.user;
+    localStorage.setItem('tm_token', token);
+    localStorage.setItem('tm_user', JSON.stringify(currentUser));
+    showToast('تم إنشاء حسابك بنجاح، أهلاً بك ' + currentUser.name);
+    nav(currentUser.role);
+  } catch(e) {
+    state.authError = e.message;
+    render();
+  }
+}
+
+function fillDemo(role){
+  const creds = {
+    admin: ['admin@tahseenmsarak.com','admin123'],
+    instructor: ['mohammed@tahseenmsarak.com','instructor123'],
+    trainee: ['abdullah@example.com','trainee123']
+  };
+  state.authMode = 'login';
+  render();
+  setTimeout(()=>{
+    document.getElementById('authEmail').value = creds[role][0];
+    document.getElementById('authPassword').value = creds[role][1];
+  }, 30);
+}
+
+function viewLogin(){
+  const err = state.authError ? `<div class="auth-error">${state.authError}</div>` : '';
+  const loginForm = `
+    <form onsubmit="doLogin(event)">
+      ${err}
+      <div class="login-field">
+        <label>البريد الإلكتروني</label>
+        <input id="authEmail" type="email" placeholder="name@example.com" required>
+      </div>
+      <div class="login-field">
+        <label>كلمة المرور</label>
+        <input id="authPassword" type="password" required>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">${icon('login',18)} تسجيل الدخول</button>
+    </form>
+    <div class="demo-hint">
+      ${icon('info',16)} حسابات تجريبية جاهزة:<br>
+      <a onclick="fillDemo('admin')" style="color:var(--blue-dark);font-weight:700">مدير</a> ·
+      <a onclick="fillDemo('instructor')" style="color:var(--blue-dark);font-weight:700">مدرب</a> ·
+      <a onclick="fillDemo('trainee')" style="color:var(--blue-dark);font-weight:700">متدرب</a>
+    </div>`;
+  const registerForm = `
+    <form onsubmit="doRegister(event)">
+      ${err}
+      <div class="role-grid">
+        <div class="role-btn ${state.regRole==='trainee'?'selected':''}" onclick="selectRegRole('trainee')">${icon('person',22)}<span>متدرب</span></div>
+        <div class="role-btn ${state.regRole==='instructor'?'selected':''}" onclick="selectRegRole('instructor')">${icon('cast_for_education',22)}<span>مدرب</span></div>
+      </div>
+      <div class="login-field">
+        <label>الاسم الكامل</label>
+        <input id="regName" type="text" required>
+      </div>
+      <div class="login-field">
+        <label>البريد الإلكتروني</label>
+        <input id="regEmail" type="email" required>
+      </div>
+      <div class="login-field">
+        <label>رقم الجوال (اختياري)</label>
+        <input id="regPhone" type="tel">
+      </div>
+      <div class="login-field">
+        <label>كلمة المرور</label>
+        <input id="regPassword" type="password" minlength="6" required>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">${icon('person_add',18)} إنشاء الحساب</button>
+    </form>`;
+  return `
+  ${header('login')}
+  <div class="login-wrap">
+    <div class="card login-card">
+      <div class="logo-mark" style="margin:0 auto 14px">${icon('school',22)}</div>
+      <div style="font-size:19px;font-weight:800">أهلاً بك</div>
+      <div style="color:var(--muted);font-size:13.5px;margin-top:4px">سجّل الدخول أو أنشئ حساباً جديداً للوصول إلى لوحتك</div>
+      <div class="auth-toggle">
+        <button class="${state.authMode==='login'?'active':''}" onclick="setAuthMode('login')">تسجيل الدخول</button>
+        <button class="${state.authMode==='register'?'active':''}" onclick="setAuthMode('register')">حساب جديد</button>
+      </div>
+      ${state.authMode==='login' ? loginForm : registerForm}
+      <div style="margin-top:16px"><a onclick="nav('home')" style="color:var(--blue);font-size:13.5px">${icon('arrow_forward',16)} العودة للصفحة الرئيسية</a></div>
+    </div>
+  </div>
+  `;
+}
+
+function requireRoleOrRedirect(role){
+  if (!currentUser || currentUser.role !== role) {
+    setTimeout(()=>{ showToast('يرجى تسجيل الدخول للوصول إلى هذه الصفحة', true); nav('login'); }, 0);
+    return false;
+  }
+  return true;
+}
+
+function sidebar(role, active){
+  const menus = {
+    admin: [
+      {k:'admin',ic:'dashboard',label:'لوحة التحكم'},
+      {k:'courses',ic:'menu_book',label:'الدورات'},
+      {k:'trainees',ic:'groups',label:'المتدربون'},
+      {k:'instructors',ic:'cast_for_education',label:'المدربون'},
+      {k:'payments',ic:'payments',label:'الطلبات والدفع'},
+      {k:'reports',ic:'bar_chart',label:'التقارير'},
+      {k:'settings',ic:'settings',label:'الإعدادات'}
+    ],
+    instructor: [
+      {k:'instructor',ic:'dashboard',label:'لوحة التحكم'},
+      {k:'mycourses',ic:'menu_book',label:'دوراتي'},
+      {k:'schedule',ic:'calendar_month',label:'جدولي'},
+      {k:'trainees',ic:'groups',label:'المتدربون'},
+      {k:'reports',ic:'bar_chart',label:'التقارير'},
+      {k:'messages',ic:'mail',label:'الرسائل'},
+      {k:'settings',ic:'settings',label:'الإعدادات'}
+    ],
+    trainee: [
+      {k:'trainee',ic:'dashboard',label:'لوحة التحكم'},
+      {k:'mycourses',ic:'menu_book',label:'دوراتي'},
+      {k:'certs',ic:'workspace_premium',label:'شهاداتي'},
+      {k:'messages',ic:'mail',label:'الرسائل'},
+      {k:'settings',ic:'settings',label:'الإعدادات'}
+    ]
+  };
+  return `
+  <div class="dash-sidebar">
+    <div class="dash-logo" onclick="nav('home')">${icon('school',22)}<span class="lbl-text">مركز تحسين مسارك</span></div>
+    <div class="dash-nav">
+      ${menus[role].map(m=>`<a class="${active===m.k?'active':''}" onclick="nav('${role}')">${icon(m.ic,20)}<span class="lbl-text">${m.label}</span></a>`).join('')}
+      <a class="logout" onclick="logout()">${icon('logout',20)}<span class="lbl-text">تسجيل الخروج</span></a>
+    </div>
+  </div>`;
+}
+
+function monthCalendar(sessionDays){
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const first = new Date(y,m,1);
+  const startOffset = first.getDay();
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const dayNames = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
+  const sessionSet = new Set((sessionDays||[]).map(d=>Number(d.split('-')[2])));
+  let cells = '';
+  for(let i=0;i<startOffset;i++) cells += '<div class="cal-cell"></div>';
+  for(let d=1; d<=daysInMonth; d++){
+    const isToday = d===now.getDate();
+    const hasSession = sessionSet.has(d);
+    cells += `<div class="cal-cell ${isToday?'today':''} ${hasSession&&!isToday?'has-session':''}">${d}</div>`;
+  }
+  const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  return `
+  <div class="cal-nav"><span>${icon('chevron_right',18)}</span><span>${monthNames[m]} ${y}</span><span>${icon('chevron_left',18)}</span></div>
+  <div class="cal-grid">
+    ${dayNames.map(d=>`<div class="cal-day-name">${d}</div>`).join('')}
+    ${cells}
+  </div>`;
+}
+
+async function viewAdmin(){
+  if (!requireRoleOrRedirect('admin')) return `${header('admin')}<div class="loading-block">جارِ التحويل...</div>`;
+  const [stats, dist, registrationsData] = await Promise.all([
+    api('/admin/stats'), api('/admin/category-distribution'), api('/admin/registrations')
+  ]);
+  const registrations = registrationsData.registrations;
+  const distMap = {};
+  dist.distribution.forEach(d => distMap[d.category] = d.pct);
+
+  return `
+  <div class="dash-shell">
+    ${sidebar('admin','admin')}
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <h2>لوحة التحكم - المدير</h2>
+        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+      </div>
+      <div class="stat-grid">
+        <div class="card stat-card"><div class="lbl">عدد المتدربين</div><div class="val">${stats.trainees.toLocaleString('ar-SA')}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.trainees}% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">الدورات النشطة</div><div class="val">${stats.activeCourses}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.activeCourses}% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">الإيرادات</div><div class="val">${money(stats.revenue)} ر.س</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.revenue}% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">طلبات جديدة (30 يوم)</div><div class="val">${stats.newOrders}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.newOrders}% من الشهر الماضي</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card panel">
+          <h3>الإيرادات (آخر 6 أشهر)</h3>
+          <div style="height:220px"><canvas id="revenueChart"></canvas></div>
+        </div>
+        <div class="card panel">
+          <h3>توزيع الدورات حسب التصنيف</h3>
+          <div style="height:170px"><canvas id="catChart"></canvas></div>
+          <div>
+            ${Object.entries(CATS).map(([k,v])=>`<div class="legend-row"><span><span class="legend-dot" style="background:${v.color}"></span>${v.name}</span><b>${distMap[k]||0}%</b></div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <div class="card panel">
+        <h3>أحدث التسجيلات</h3>
+        ${registrations.length ? `
+        <table class="dt">
+          <thead><tr><th>الاسم</th><th>الدورة</th><th>تاريخ التسجيل</th><th>الحالة</th></tr></thead>
+          <tbody>
+            ${registrations.map(r=>`<tr><td>${r.trainee_name}</td><td>${r.course_title}</td><td>${r.enrolled_at.slice(0,10)}</td><td><span class="status-pill" style="background:${r.status==='completed'?'var(--green-bg)':'var(--amber-bg)'};color:${r.status==='completed'?'var(--green)':'var(--amber)'}">${r.status==='completed'?'مكتمل':'نشط'}</span></td></tr>`).join('')}
+          </tbody>
+        </table>` : `<div class="empty-hint">لا توجد تسجيلات بعد</div>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+async function viewInstructor(){
+  if (!requireRoleOrRedirect('instructor')) return `${header('instructor')}<div class="loading-block">جارِ التحويل...</div>`;
+  const [coursesData, scheduleData, progressData, activityData] = await Promise.all([
+    api('/instructor/my-courses'), api('/instructor/schedule'), api('/instructor/progress-summary'), api('/instructor/activity')
+  ]);
+  const myCourses = coursesData.courses;
+  const sessions = scheduleData.sessions;
+  const progress = progressData;
+  const activity = activityData.activity;
+
+  return `
+  <div class="dash-shell">
+    ${sidebar('instructor','instructor')}
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <h2>لوحة التحكم - المدرب</h2>
+        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+      </div>
+      <div class="three-col" style="margin-bottom:16px">
+        <div class="card profile-panel">
+          <div class="avatar-circle">${initials(currentUser.name)}</div>
+          <div style="font-weight:700">${currentUser.name}</div>
+          <div style="color:var(--muted);font-size:12.5px">${currentUser.title||'مدرب معتمد'}</div>
+          <div style="color:var(--muted);font-size:12px;margin-top:4px">${currentUser.email}</div>
+        </div>
+        <div class="card panel">
+          <h3>دوراتي</h3>
+          ${myCourses.length ? `
+          <table class="dt">
+            <thead><tr><th>الدورة</th><th>المتدربون</th></tr></thead>
+            <tbody>${myCourses.map(c=>`<tr><td>${c.title}</td><td>${c.students}</td></tr>`).join('')}</tbody>
+          </table>` : `<div class="empty-hint">لا توجد دورات مرتبطة بك بعد</div>`}
+        </div>
+        <div class="card panel">
+          <h3>جدولي</h3>
+          ${monthCalendar(sessions.map(s=>s.session_date))}
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card panel">
+          <h3>إجمالي التقدم</h3>
+          <div style="display:flex;align-items:center;gap:24px">
+            <div style="height:150px;width:150px;position:relative"><canvas id="progressChart"></canvas>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">${progress.overallPct||0}%</div>
+            </div>
+            <div style="flex:1">
+              <div class="legend-row"><span><span class="legend-dot" style="background:#2f5fdd"></span>ممتاز</span><b>${progress.breakdown.excellent}%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#0f9d78"></span>جيد</span><b>${progress.breakdown.good}%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#d97706"></span>متوسط</span><b>${progress.breakdown.average}%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#dc2626"></span>ضعيف</span><b>${progress.breakdown.weak}%</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="card panel">
+          <h3>آخر الأنشطة</h3>
+          ${activity.length ? activity.map(a=>`<div class="activity-item"><div class="activity-dot"></div><div>${a}</div></div>`).join('') : `<div class="empty-hint">لا توجد أنشطة بعد</div>`}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function viewTrainee(){
+  if (!requireRoleOrRedirect('trainee')) return `${header('trainee')}<div class="loading-block">جارِ التحويل...</div>`;
+  const [coursesData, certsData, notifsData, sessionData] = await Promise.all([
+    api('/trainee/my-courses'), api('/trainee/certificates'), api('/trainee/notifications'), api('/trainee/next-session')
+  ]);
+  const myCourses = coursesData.courses;
+  const certs = certsData.certificates;
+  const notifs = notifsData.notifications;
+  const session = sessionData.session;
+
+  return `
+  <div class="dash-shell">
+    ${sidebar('trainee','trainee')}
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <h2>لوحة التحكم - المتدرب</h2>
+        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+      </div>
+      <div class="two-col" style="margin-bottom:16px">
+        <div class="card panel">
+          <h3>دوراتي المسجلة</h3>
+          ${myCourses.length ? myCourses.map(c=>`
+            <div class="progress-row">
+              <div class="p-top"><span>${c.title}</span><b>${c.progress}%</b></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${c.progress}%"></div></div>
+              <div style="margin-top:6px;display:flex;gap:8px">
+                <button class="btn btn-outline btn-sm" onclick="bumpProgress(${c.enrollmentId}, ${Math.min(100,c.progress+10)})">${icon('trending_up',14)} تحديث التقدم</button>
+              </div>
+            </div>`).join('') : `<div class="empty-hint">لم تسجل في أي دورة بعد</div>`}
+          <button class="btn btn-outline btn-sm" onclick="nav('courses')">${icon('add',16)} تصفح دورات جديدة</button>
+        </div>
+        <div class="card session-card">
+          <h3>الجلسة القادمة</h3>
+          ${session ? `
+          <div class="session-badge">${icon('videocam',22)}<div><div style="font-weight:700;font-size:13.5px">${session.course_title}</div><div style="font-size:12.5px">${session.session_date} · ${session.start_time} - ${session.end_time}</div></div></div>
+          <button class="btn btn-primary btn-block" onclick="showToast('تم الانضمام إلى الجلسة')">${icon('login',18)} الانضمام للجلسة</button>` : `<div class="empty-hint">لا توجد جلسات قادمة مجدولة حالياً</div>`}
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card panel">
+          <h3>شهاداتي</h3>
+          ${certs.length ? `<div class="three-col">${certs.map(c=>`
+            <div class="card cert-card">
+              <div class="cert-icon">${icon('workspace_premium',26)}</div>
+              <div style="font-weight:700;font-size:13px">${c.title}</div>
+              <div style="color:var(--muted);font-size:12px">تاريخ الإصدار: ${c.issued_at.slice(0,10)}</div>
+              <button class="btn btn-outline btn-sm btn-block">عرض الشهادة</button>
+            </div>`).join('')}</div>` : `<div class="empty-hint">أكمل إحدى دوراتك للحصول على شهادتك الأولى</div>`}
+        </div>
+        <div class="card panel">
+          <h3>الإشعارات</h3>
+          ${notifs.length ? notifs.map(n=>`<div class="notif-item"><div class="notif-icon">${icon(n.icon,17)}</div><div><div>${n.text}</div><div style="color:var(--muted);font-size:11.5px">${n.created_at.slice(0,10)}</div></div></div>`).join('') : `<div class="empty-hint">لا توجد إشعارات جديدة</div>`}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function bumpProgress(enrollmentId, newPct){
+  try {
+    await api('/trainee/my-courses/' + enrollmentId + '/progress', { method:'PUT', body: JSON.stringify({ progress: newPct }) });
+    showToast(newPct >= 100 ? 'أحسنت! أكملت الدورة وحصلت على شهادة جديدة' : 'تم تحديث نسبة تقدمك');
+    render();
+  } catch(e) { showToast(e.message, true); }
+}
+
+const views = {
+  home: viewHome,
+  courses: viewCourses,
+  courseDetail: viewCourseDetail,
+  login: viewLogin,
+  admin: viewAdmin,
+  instructor: viewInstructor,
+  trainee: viewTrainee
+};
+
+function destroyCharts(){
+  Object.values(charts).forEach(ch=>{ if(ch) ch.destroy(); });
+}
+
+async function initCharts(){
+  destroyCharts();
+  if(state.view==='admin'){
+    try {
+      const rev = await api('/admin/revenue-monthly');
+      const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+      const labels = rev.months.map(m => { const parts=m.ym.split('-'); return monthNames[Number(parts[1])-1]; });
+      const values = rev.months.map(m => m.total);
+      const revCtx = document.getElementById('revenueChart');
+      if(revCtx){
+        charts.rev = new Chart(revCtx, {
+          type:'line',
+          data:{ labels: labels.length?labels:['لا توجد بيانات'], datasets:[{ data: values.length?values:[0], borderColor:'#2f5fdd', backgroundColor:'rgba(47,95,221,.1)', fill:true, tension:.35, pointRadius:4, pointBackgroundColor:'#2f5fdd' }] },
+          options:{ plugins:{legend:{display:false}}, scales:{y:{ticks:{callback:v=>(v/1000)+'k'}, grid:{color:'#eef0f6'}}, x:{grid:{display:false}}}, responsive:true, maintainAspectRatio:false }
+        });
+      }
+    } catch(e) {}
+    const distData = await api('/admin/category-distribution').catch(()=>({distribution:[]}));
+    const order = ['science','industrial','pm','safety'];
+    const colors = ['#2f5fdd','#0f9d78','#d97706','#7c3aed'];
+    const dMap = {};
+    distData.distribution.forEach(d=>dMap[d.category]=d.pct);
+    const catCtx = document.getElementById('catChart');
+    if(catCtx){
+      charts.cat = new Chart(catCtx, {
+        type:'doughnut',
+        data:{ labels: order.map(k=>CATS[k].name), datasets:[{ data: order.map(k=>dMap[k]||0), backgroundColor: colors, borderWidth:0 }] },
+        options:{plugins:{legend:{display:false}}, cutout:'70%', responsive:true, maintainAspectRatio:false}
+      });
+    }
+  }
+  if(state.view==='instructor'){
+    const progress = await api('/instructor/progress-summary').catch(()=>null);
+    const pCtx = document.getElementById('progressChart');
+    if(pCtx && progress){
+      charts.prog = new Chart(pCtx, {
+        type:'doughnut',
+        data:{ labels:['ممتاز','جيد','متوسط','ضعيف'], datasets:[{data:[progress.breakdown.excellent,progress.breakdown.good,progress.breakdown.average,progress.breakdown.weak], backgroundColor:['#2f5fdd','#0f9d78','#d97706','#dc2626'], borderWidth:0}] },
+        options:{plugins:{legend:{display:false}}, cutout:'72%', responsive:true, maintainAspectRatio:false}
+      });
+    }
+  }
+}
+
+let renderToken = 0;
+async function render(){
+  const myToken = ++renderToken;
+  const app = document.getElementById('app');
+  app.innerHTML = header(state.view) + `<div class="loading-block"><span class="material-symbols-outlined spin" style="font-size:30px">progress_activity</span><div style="margin-top:10px">جاري التحميل...</div></div>`;
+  try {
+    const html = await (views[state.view] ? views[state.view]() : viewHome());
+    if (myToken !== renderToken) return;
+    app.innerHTML = html;
+    if(state.view==='courses') renderCoursesGrid();
+    initCharts();
+  } catch(e) {
+    if (myToken !== renderToken) return;
+    app.innerHTML = header(state.view) + `<div class="container"><div class="loading-block">${icon('error',30)}<div style="margin-top:10px">${e.message||'تعذر تحميل البيانات، تحقق من اتصال الخادم'}</div></div></div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>

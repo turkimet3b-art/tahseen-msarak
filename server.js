@@ -20,8 +20,8 @@ app.use('/api/trainee', traineeRoutes);
 app.use('/api/instructor', instructorRoutes);
 app.use('/api/admin', adminRoutes);
 
-app.get('/api/settings', (req, res) => {
-    const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
+app.get('/api/settings', async (req, res) => {
+    const row = await db.prepare('SELECT data FROM settings WHERE id = 1').get();
     res.json({ settings: row ? JSON.parse(row.data) : {} });
 });
 
@@ -33,6 +33,14 @@ app.get('*', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+
+db.ready
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to start server: database not ready.', err);
+    process.exit(1);
+  });

@@ -263,7 +263,15 @@ let siteSettings = {
         featuredCoursesSubtitle: 'اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة',
         coursesPageTitle: 'جميع الدورات التدريبية',
         coursesPageSubtitle: 'تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي',
-        footerCopyrightText: 'جميع الحقوق محفوظة'
+        footerCopyrightText: 'جميع الحقوق محفوظة',
+        logoImage: '',
+        heroBannerImage: '',
+        socialFacebook: '',
+        socialTwitter: '',
+        socialInstagram: '',
+        socialLinkedin: '',
+        socialWhatsapp: '',
+        socialYoutube: ''
 };
 
 const state = { view:'home', courseId:1, detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'}, authMode:'login', regRole:'trainee' };
@@ -319,7 +327,7 @@ function header(activePage){
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo" onclick="nav('home')">
-        <div class="logo-mark">${icon('school',20)}</div>
+        <div class="logo-mark">${siteSettings.logoImage ? '<img src="'+esc(siteSettings.logoImage)+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' : icon('school',20)}</div>
         <span>${siteSettings.siteName}</span>
       </div>
       <nav class="main-nav">
@@ -342,10 +350,12 @@ function footer(){
           <h5>${siteSettings.siteName}</h5>
           <p>${siteSettings.footerAbout}</p>
           <div class="footer-social">
-            <a href="#">${icon('link',16)}</a>
-            <a href="#">${icon('alternate_email',16)}</a>
-            <a href="#">${icon('photo_camera',16)}</a>
-            <a href="#">${icon('groups',16)}</a>
+            ${siteSettings.socialFacebook ? '<a href="'+esc(siteSettings.socialFacebook)+'" target="_blank" rel="noopener">'+icon('groups',16)+'</a>' : ''}
+            ${siteSettings.socialTwitter ? '<a href="'+esc(siteSettings.socialTwitter)+'" target="_blank" rel="noopener">'+icon('alternate_email',16)+'</a>' : ''}
+            ${siteSettings.socialInstagram ? '<a href="'+esc(siteSettings.socialInstagram)+'" target="_blank" rel="noopener">'+icon('photo_camera',16)+'</a>' : ''}
+            ${siteSettings.socialLinkedin ? '<a href="'+esc(siteSettings.socialLinkedin)+'" target="_blank" rel="noopener">'+icon('work',16)+'</a>' : ''}
+            ${siteSettings.socialWhatsapp ? '<a href="'+esc(siteSettings.socialWhatsapp)+'" target="_blank" rel="noopener">'+icon('chat',16)+'</a>' : ''}
+            ${siteSettings.socialYoutube ? '<a href="'+esc(siteSettings.socialYoutube)+'" target="_blank" rel="noopener">'+icon('play_circle',16)+'</a>' : ''}
           </div>
         </div>
         <div>
@@ -438,7 +448,7 @@ async function viewHome(){
           <button class="btn btn-ghost-light" onclick="document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})">${siteSettings.heroBtnSecondary}</button>
         </div>
       </div>
-      <div class="hero-visual">${icon('engineering',120)}</div>
+      <div class="hero-visual">${siteSettings.heroBannerImage ? '<img src="'+esc(siteSettings.heroBannerImage)+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' : icon('engineering',120)}</div>
     </div>
   </section>
   <div class="container">
@@ -869,6 +879,36 @@ async function viewAdminSettings(){
         <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
       </div>
       <div class="card panel" style="max-width:760px">
+        <h3>الشعار والبانر الرئيسي</h3>
+        <div class="login-field">
+          <label>شعار الموقع (Logo)</label>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:6px">
+            <div id="logoPreviewBox" style="width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--navy2);display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.logoImage ? '<img src="'+esc(s.logoImage)+'" style="width:100%;height:100%;object-fit:cover">' : icon('school',28)}</div>
+            <button type="button" class="btn btn-outline" onclick="document.getElementById('logoFileInput').click()">${icon('upload',18)} رفع صورة</button>
+            <button type="button" class="btn btn-outline" onclick="removeSettingsImage('logo')">${icon('delete',18)} إزالة</button>
+            <input type="file" id="logoFileInput" accept="image/*" style="display:none" onchange="handleSettingsImageUpload(event,'logo')">
+          </div>
+        </div>
+        <div class="login-field" style="margin-bottom:0">
+          <label>صورة البانر الرئيسي (القسم العلوي بالصفحة الرئيسية)</label>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:6px">
+            <div id="bannerPreviewBox" style="width:110px;height:64px;border-radius:10px;overflow:hidden;background:var(--navy2);display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.heroBannerImage ? '<img src="'+esc(s.heroBannerImage)+'" style="width:100%;height:100%;object-fit:cover">' : icon('engineering',28)}</div>
+            <button type="button" class="btn btn-outline" onclick="document.getElementById('bannerFileInput').click()">${icon('upload',18)} رفع صورة</button>
+            <button type="button" class="btn btn-outline" onclick="removeSettingsImage('banner')">${icon('delete',18)} إزالة</button>
+            <input type="file" id="bannerFileInput" accept="image/*" style="display:none" onchange="handleSettingsImageUpload(event,'banner')">
+          </div>
+        </div>
+      </div>
+      <div class="card panel" style="max-width:760px;margin-top:16px">
+        <h3>روابط التواصل الاجتماعي</h3>
+        <div class="login-field"><label>فيسبوك</label><input id="setSocialFacebook" value="${esc(s.socialFacebook)}" placeholder="https://facebook.com/..."></div>
+        <div class="login-field"><label>X (تويتر)</label><input id="setSocialTwitter" value="${esc(s.socialTwitter)}" placeholder="https://x.com/..."></div>
+        <div class="login-field"><label>انستقرام</label><input id="setSocialInstagram" value="${esc(s.socialInstagram)}" placeholder="https://instagram.com/..."></div>
+        <div class="login-field"><label>لينكدإن</label><input id="setSocialLinkedin" value="${esc(s.socialLinkedin)}" placeholder="https://linkedin.com/..."></div>
+        <div class="login-field"><label>واتساب</label><input id="setSocialWhatsapp" value="${esc(s.socialWhatsapp)}" placeholder="https://wa.me/9665xxxxxxxx"></div>
+        <div class="login-field" style="margin-bottom:0"><label>يوتيوب</label><input id="setSocialYoutube" value="${esc(s.socialYoutube)}" placeholder="https://youtube.com/..."></div>
+      </div>
+      <div class="card panel" style="max-width:760px;margin-top:16px">
         <h3>القسم الرئيسي (Hero)</h3>
         <div class="login-field"><label>اسم الموقع</label><input id="setSiteName" value="${esc(s.siteName)}"></div>
         <div class="login-field"><label>العنوان الرئيسي</label><input id="setHeroTitle" value="${esc(s.heroTitle)}"></div>
@@ -911,6 +951,37 @@ async function viewAdminSettings(){
   </div>`;
 }
 
+let pendingLogoImage = null, pendingBannerImage = null;
+function handleSettingsImageUpload(evt, kind){
+  const file = evt.target.files && evt.target.files[0];
+  if (!file) return;
+  const maxDim = kind === 'logo' ? 300 : 1200;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const img = new Image();
+    img.onload = function(){
+      let w = img.width, h = img.height;
+      if (w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      if (kind === 'logo') pendingLogoImage = dataUrl; else pendingBannerImage = dataUrl;
+      const box = document.getElementById(kind === 'logo' ? 'logoPreviewBox' : 'bannerPreviewBox');
+      if (box) box.innerHTML = '<img src="'+dataUrl+'" style="width:100%;height:100%;object-fit:cover">';
+      showToast('تم اختيار الصورة، اضغط حفظ التغييرات لتطبيقها');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function removeSettingsImage(kind){
+  if (kind === 'logo') pendingLogoImage = ''; else pendingBannerImage = '';
+  const box = document.getElementById(kind === 'logo' ? 'logoPreviewBox' : 'bannerPreviewBox');
+  if (box) box.innerHTML = kind === 'logo' ? icon('school',28) : icon('engineering',28);
+  showToast('تمت إزالة الصورة، اضغط حفظ التغييرات لتطبيقها');
+}
+
 async function saveSiteSettings(){
   const feats = [0,1,2,3].map(i => ({
     icon: (siteSettings.features && siteSettings.features[i]) ? siteSettings.features[i].icon : 'star',
@@ -932,11 +1003,21 @@ async function saveSiteSettings(){
     featuredCoursesSubtitle: document.getElementById('setFeaturedCoursesSubtitle').value,
     coursesPageTitle: document.getElementById('setCoursesPageTitle').value,
     coursesPageSubtitle: document.getElementById('setCoursesPageSubtitle').value,
-    footerCopyrightText: document.getElementById('setFooterCopyrightText').value
+    footerCopyrightText: document.getElementById('setFooterCopyrightText').value,
+    logoImage: (pendingLogoImage !== null ? pendingLogoImage : siteSettings.logoImage),
+    heroBannerImage: (pendingBannerImage !== null ? pendingBannerImage : siteSettings.heroBannerImage),
+    socialFacebook: document.getElementById('setSocialFacebook').value,
+    socialTwitter: document.getElementById('setSocialTwitter').value,
+    socialInstagram: document.getElementById('setSocialInstagram').value,
+    socialLinkedin: document.getElementById('setSocialLinkedin').value,
+    socialWhatsapp: document.getElementById('setSocialWhatsapp').value,
+    socialYoutube: document.getElementById('setSocialYoutube').value
   };
   try {
     const data = await api('/admin/settings', { method:'PUT', body: JSON.stringify(payload) });
     siteSettings = data.settings;
+    pendingLogoImage = null;
+    pendingBannerImage = null;
     showToast('تم حفظ التغييرات بنجاح');
   } catch(e) { showToast(e.message, true); }
 }

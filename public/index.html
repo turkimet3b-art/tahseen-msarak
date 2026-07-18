@@ -258,7 +258,12 @@ let siteSettings = {
   footerAbout: 'متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي لتطوير مهاراتك وبناء مستقبلك المهني.',
   contactPhone: '+966 50 123 4567',
   contactEmail: 'info@tahseenmsarak.com',
-  contactAddress: 'الرياض، المملكة العربية السعودية'
+  contactAddress: 'الرياض، المملكة العربية السعودية',
+    featuredCoursesTitle: 'الدورات المميزة',
+        featuredCoursesSubtitle: 'اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة',
+        coursesPageTitle: 'جميع الدورات التدريبية',
+        coursesPageSubtitle: 'تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي',
+        footerCopyrightText: 'جميع الحقوق محفوظة'
 };
 
 const state = { view:'home', courseId:1, detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'}, authMode:'login', regRole:'trainee' };
@@ -368,7 +373,7 @@ function footer(){
           <div class="footer-contact">${icon('location_on',16)} ${siteSettings.contactAddress}</div>
         </div>
       </div>
-      <div class="footer-bottom">${siteSettings.siteName} © 2026. جميع الحقوق محفوظة.</div>
+            <div class="footer-bottom">${siteSettings.siteName} © ${new Date().getFullYear()}. ${siteSettings.footerCopyrightText}.</div>
     </div>
   </footer>`;
 }
@@ -444,8 +449,8 @@ async function viewHome(){
   <section class="section" style="background:#fff">
     <div class="container">
       <div class="section-head">
-        <div class="section-title">الدورات المميزة</div>
-        <div class="section-sub">اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة</div>
+                <div class="section-title">${siteSettings.featuredCoursesTitle}</div>
+                        <div class="section-sub">${siteSettings.featuredCoursesSubtitle}</div>
       </div>
       <div class="course-grid">${featured.map(courseCard).join('')}</div>
       <div style="text-align:center;margin-top:28px"><button class="btn btn-outline" onclick="nav('courses')">عرض جميع الدورات ${icon('arrow_back',18)}</button></div>
@@ -496,8 +501,8 @@ async function viewCourses(){
   <div class="container" style="padding-top:24px">
     <div class="breadcrumb"><a onclick="nav('home')">الرئيسية</a> ${icon('chevron_left',16)} <span>الدورات</span></div>
     <div class="section-head" style="align-items:flex-start;text-align:right;margin-bottom:20px">
-      <div class="section-title">جميع الدورات التدريبية</div>
-      <div class="section-sub">تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي</div>
+            <div class="section-title">${siteSettings.coursesPageTitle}</div>
+                  <div class="section-sub">${siteSettings.coursesPageSubtitle}</div>
     </div>
     <div class="filters-bar">
       <div class="search-wrap">
@@ -886,7 +891,21 @@ async function viewAdminSettings(){
         <div class="login-field"><label>البريد الإلكتروني</label><input id="setContactEmail" value="${esc(s.contactEmail)}"></div>
         <div class="login-field" style="margin-bottom:0"><label>العنوان</label><input id="setContactAddress" value="${esc(s.contactAddress)}"></div>
       </div>
-      <button class="btn btn-primary" style="margin-top:16px" onclick="saveSiteSettings()">${icon('save',18)} حفظ التغييرات</button>
+            <div class="card panel" style="max-width:760px;margin-top:16px">
+                    <h3>قسم الدورات المميزة (الصفحة الرئيسية)</h3>
+                            <div class="login-field"><label>عنوان القسم</label><input id="setFeaturedCoursesTitle" value="${esc(s.featuredCoursesTitle)}"></div>
+                                    <div class="login-field" style="margin-bottom:0"><label>الوصف الفرعي</label><input id="setFeaturedCoursesSubtitle" value="${esc(s.featuredCoursesSubtitle)}"></div>
+                                          </div>
+                                                <div class="card panel" style="max-width:760px;margin-top:16px">
+                                                        <h3>صفحة الدورات</h3>
+                                                                <div class="login-field"><label>عنوان الصفحة</label><input id="setCoursesPageTitle" value="${esc(s.coursesPageTitle)}"></div>
+                                                                        <div class="login-field" style="margin-bottom:0"><label>الوصف الفرعي</label><input id="setCoursesPageSubtitle" value="${esc(s.coursesPageSubtitle)}"></div>
+                                                                              </div>
+                                                                                    <div class="card panel" style="max-width:760px;margin-top:16px">
+                                                                                            <h3>حقوق النشر (أسفل الموقع)</h3>
+                                                                                                    <div class="login-field" style="margin-bottom:0"><label>نص حقوق النشر</label><input id="setFooterCopyrightText" value="${esc(s.footerCopyrightText)}"></div>
+                                                                                                          </div>
+                                                                                                          <button class="btn btn-primary" style="margin-top:16px" onclick="saveSiteSettings()">${icon('save',18)} حفظ التغييرات</button>
       <a onclick="nav('home')" style="margin-inline-start:12px;color:var(--blue);font-size:13.5px">${icon('visibility',16)} معاينة الصفحة الرئيسية</a>
     </div>
   </div>`;
@@ -908,7 +927,12 @@ async function saveSiteSettings(){
     footerAbout: document.getElementById('setFooterAbout').value,
     contactPhone: document.getElementById('setContactPhone').value,
     contactEmail: document.getElementById('setContactEmail').value,
-    contactAddress: document.getElementById('setContactAddress').value
+    contactAddress: document.getElementById('setContactAddress').value,
+    featuredCoursesTitle: document.getElementById('setFeaturedCoursesTitle').value,
+    featuredCoursesSubtitle: document.getElementById('setFeaturedCoursesSubtitle').value,
+    coursesPageTitle: document.getElementById('setCoursesPageTitle').value,
+    coursesPageSubtitle: document.getElementById('setCoursesPageSubtitle').value,
+    footerCopyrightText: document.getElementById('setFooterCopyrightText').value
   };
   try {
     const data = await api('/admin/settings', { method:'PUT', body: JSON.stringify(payload) });

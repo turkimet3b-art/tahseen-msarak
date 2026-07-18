@@ -57,4 +57,17 @@ router.delete('/users/:id', (req, res) => {
   res.json({ ok: true });
 });
 
+    router.get('/settings', (req, res) => {
+        const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
+        res.json({ settings: row ? JSON.parse(row.data) : {} });
+    });
+
+router.put('/settings', (req, res) => {
+    const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
+    const current = row ? JSON.parse(row.data) : {};
+    const updated = Object.assign({}, current, req.body || {});
+    db.prepare('UPDATE settings SET data = ? WHERE id = 1').run(JSON.stringify(updated));
+    res.json({ settings: updated });
+});
+
 module.exports = router;

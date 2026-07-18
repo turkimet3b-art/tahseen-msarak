@@ -84,6 +84,11 @@ CREATE TABLE IF NOT EXISTS reviews (
   text TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
+
+CREATE TABLE IF NOT EXISTS settings (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+    data TEXT NOT NULL DEFAULT '{}'
+    );
 `);
 
 function seedIfEmpty() {
@@ -158,4 +163,12 @@ function seedIfEmpty() {
 
 seedIfEmpty();
 
+
+function seedSettingsIfEmpty() {
+    const row = db.prepare('SELECT COUNT(*) AS c FROM settings').get();
+    if (row.c > 0) return;
+    db.prepare('INSERT INTO settings (id, data) VALUES (1, ?)').run('{}');
+}
+
+seedSettingsIfEmpty();
 module.exports = db;

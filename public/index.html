@@ -104,6 +104,8 @@ button{cursor:pointer;}
 .footer-contact{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:12px;}
 .footer-social{display:flex;gap:10px;margin-top:16px;}
 .footer-social a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
+.footer-contact a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:8px;border-radius:8px;padding:4px 8px;margin:-4px -8px;transition:background .15s,color .15s;cursor:pointer;}
+.footer-contact a:hover{background:rgba(255,255,255,.1);color:#fff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:13px;}
 
 .filters-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;padding:16px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);}
@@ -233,7 +235,7 @@ table.dt tr:last-child td{border-bottom:none;}
 <div id="app"></div>
 <script>
 const API_BASE = '/api';
-const CATS = {
+let CATS = {
   'science': {name:'العلوم والهندسة', color:'#2f5fdd', bg:'#eaf1fd'},
   'industrial': {name:'القطاع الصناعي', color:'#0f9d78', bg:'#d7f5ec'},
   'pm': {name:'إدارة المشاريع', color:'#d97706', bg:'#fef3c7'},
@@ -271,7 +273,13 @@ let siteSettings = {
         socialInstagram: '',
         socialLinkedin: '',
         socialWhatsapp: '',
-        socialYoutube: ''
+        socialYoutube: '',
+        courseCategories: [
+          {key:'science', name:'العلوم والهندسة', color:'#2f5fdd', bg:'#eaf1fd'},
+          {key:'industrial', name:'القطاع الصناعي', color:'#0f9d78', bg:'#d7f5ec'},
+          {key:'pm', name:'إدارة المشاريع', color:'#d97706', bg:'#fef3c7'},
+          {key:'safety', name:'السلامة المهنية', color:'#7c3aed', bg:'#ede9fe'}
+        ]
 };
 
 const state = { view:'home', courseId:1, detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'}, authMode:'login', regRole:'trainee' };
@@ -288,10 +296,32 @@ async function api(path, opts){
   return data;
 }
 
+function telHref(p){ return 'tel:' + String(p||'').replace(/[^0-9+]/g,''); }
+function rebuildCats(){
+  if (siteSettings.courseCategories && siteSettings.courseCategories.length){
+    CATS = {};
+    siteSettings.courseCategories.forEach(c => { CATS[c.key] = { name: c.name, color: c.color, bg: c.bg || (c.color+'22') }; });
+  }
+}
+function categoryRowHTML(cat){
+  cat = cat || {key:'', name:'', color:'#2f5fdd'};
+  return '<div class="category-row" data-key="'+esc(cat.key||'')+'" style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'
+    + '<input type="color" class="cat-color-input" value="'+(cat.color||'#2f5fdd')+'" style="width:44px;height:38px;padding:2px;border-radius:8px;cursor:pointer">'
+    + '<input type="text" class="cat-name-input" value="'+esc(cat.name||'')+'" placeholder="اسم التصنيف" style="flex:1">'
+    + '<button type="button" class="btn btn-outline" onclick="removeCategoryRow(this)">'+icon('delete',18)+'</button>'
+    + '</div>';
+}
+function removeCategoryRow(btn){ btn.closest('.category-row').remove(); }
+function addCategoryRow(){
+  const container = document.getElementById('categoriesContainer');
+  if (container) container.insertAdjacentHTML('beforeend', categoryRowHTML(null));
+}
+
 async function loadSettings(){
   try {
     const data = await api('/settings');
     if (data.settings && Object.keys(data.settings).length) siteSettings = data.settings;
+    rebuildCats();
   } catch(e) {}
 }
 
@@ -361,10 +391,7 @@ function footer(){
         <div>
           <h5>الدورات</h5>
           <ul>
-            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'science'}})">العلوم والهندسة</a></li>
-            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'industrial'}})">القطاع الصناعي</a></li>
-            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'pm'}})">إدارة المشاريع</a></li>
-            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'safety'}})">السلامة المهنية</a></li>
+            ${Object.entries(CATS).map(([k,v])=>`<li><a onclick="nav('courses',{filters:{...state.filters,cat:'${k}'}})">${v.name}</a></li>`).join('')}
           </ul>
         </div>
         <div>
@@ -378,9 +405,9 @@ function footer(){
         </div>
         <div id="about-section">
           <h5>تواصل معنا</h5>
-          <div class="footer-contact">${icon('call',16)} ${siteSettings.contactPhone}</div>
-          <div class="footer-contact">${icon('mail',16)} ${siteSettings.contactEmail}</div>
-          <div class="footer-contact">${icon('location_on',16)} ${siteSettings.contactAddress}</div>
+          <div class="footer-contact"><a href="${telHref(siteSettings.contactPhone)}">${icon('call',16)} ${siteSettings.contactPhone}</a></div>
+          <div class="footer-contact"><a href="mailto:${siteSettings.contactEmail}">${icon('mail',16)} ${siteSettings.contactEmail}</a></div>
+          <div class="footer-contact"><a href="https://www.google.com/maps/search/${encodeURIComponent(siteSettings.contactAddress)}" target="_blank" rel="noopener">${icon('location_on',16)} ${siteSettings.contactAddress}</a></div>
         </div>
       </div>
             <div class="footer-bottom">${siteSettings.siteName} © ${new Date().getFullYear()}. ${siteSettings.footerCopyrightText}.</div>
@@ -389,7 +416,7 @@ function footer(){
 }
 
 function courseThumb(c, big){
-  const cc = CATS[c.cat];
+  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
   return `<div class="course-thumb" style="background:${cc.bg};color:${cc.color}">
     ${icon(c.icon, big?70:52)}
     ${!big?`<span class="badge course-cat-badge" style="color:${cc.color}">${cc.name}</span>`:''}
@@ -397,7 +424,7 @@ function courseThumb(c, big){
 }
 
 function courseCard(c){
-  const cc = CATS[c.cat];
+  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
   return `
   <div class="card course-card" onclick="nav('courseDetail',{courseId:${c.id},detailTab:'content'})">
     ${courseThumb(c)}
@@ -548,7 +575,7 @@ async function viewCourseDetail(){
   try { data = await api('/courses/' + state.courseId); }
   catch(e) { return `${header('courses')}<div class="container" style="padding:60px 0;text-align:center;color:var(--muted)">الدورة غير موجودة</div>${footer()}`; }
   const c = data.course;
-  const cc = CATS[c.cat];
+  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
   const modules = data.modules;
   const reviews = data.reviews;
   if (!allCourses.length) await loadCourses();
@@ -909,6 +936,11 @@ async function viewAdminSettings(){
         <div class="login-field" style="margin-bottom:0"><label>يوتيوب</label><input id="setSocialYoutube" value="${esc(s.socialYoutube)}" placeholder="https://youtube.com/..."></div>
       </div>
       <div class="card panel" style="max-width:760px;margin-top:16px">
+        <h3>تصنيفات الدورات</h3>
+        <div id="categoriesContainer">${(s.courseCategories||[]).map(cat=>categoryRowHTML(cat)).join('')}</div>
+        <button type="button" class="btn btn-outline" onclick="addCategoryRow()" style="margin-top:8px">${icon('add',18)} إضافة تصنيف</button>
+      </div>
+      <div class="card panel" style="max-width:760px;margin-top:16px">
         <h3>القسم الرئيسي (Hero)</h3>
         <div class="login-field"><label>اسم الموقع</label><input id="setSiteName" value="${esc(s.siteName)}"></div>
         <div class="login-field"><label>العنوان الرئيسي</label><input id="setHeroTitle" value="${esc(s.heroTitle)}"></div>
@@ -1011,11 +1043,18 @@ async function saveSiteSettings(){
     socialInstagram: document.getElementById('setSocialInstagram').value,
     socialLinkedin: document.getElementById('setSocialLinkedin').value,
     socialWhatsapp: document.getElementById('setSocialWhatsapp').value,
-    socialYoutube: document.getElementById('setSocialYoutube').value
+    socialYoutube: document.getElementById('setSocialYoutube').value,
+    courseCategories: Array.from(document.querySelectorAll('#categoriesContainer .category-row')).map(row => {
+      const name = row.querySelector('.cat-name-input').value.trim();
+      const color = row.querySelector('.cat-color-input').value;
+      const key = row.getAttribute('data-key') || ('cat_' + Date.now() + '_' + Math.random().toString(36).slice(2,7));
+      return { key, name, color, bg: color + '22' };
+    }).filter(c => c.name)
   };
   try {
     const data = await api('/admin/settings', { method:'PUT', body: JSON.stringify(payload) });
     siteSettings = data.settings;
+    rebuildCats();
     pendingLogoImage = null;
     pendingBannerImage = null;
     showToast('تم حفظ التغييرات بنجاح');
@@ -1183,8 +1222,8 @@ async function initCharts(){
       }
     } catch(e) {}
     const distData = await api('/admin/category-distribution').catch(()=>({distribution:[]}));
-    const order = ['science','industrial','pm','safety'];
-    const colors = ['#2f5fdd','#0f9d78','#d97706','#7c3aed'];
+    const order = Object.keys(CATS);
+    const colors = order.map(k => CATS[k].color);
     const dMap = {};
     distData.distribution.forEach(d=>dMap[d.category]=d.pct);
     const catCtx = document.getElementById('catChart');

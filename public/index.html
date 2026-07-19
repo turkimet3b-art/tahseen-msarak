@@ -72,6 +72,7 @@ button{cursor:pointer;}
 .hero p{margin-top:16px;color:#c6cee6;font-size:16px;max-width:480px;}
 .hero-actions{display:flex;gap:12px;margin-top:28px;}
 .hero-visual{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.04);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;}
+.hero-visual .material-symbols-outlined{font-size:110px;color:rgba(255,255,255,.25);}
 
 .features-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:40px 0;}
 .feature-item{display:flex;align-items:center;gap:14px;}
@@ -104,8 +105,6 @@ button{cursor:pointer;}
 .footer-contact{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:12px;}
 .footer-social{display:flex;gap:10px;margin-top:16px;}
 .footer-social a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
-.footer-contact a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:8px;border-radius:8px;padding:4px 8px;margin:-4px -8px;transition:background .15s,color .15s;cursor:pointer;}
-.footer-contact a:hover{background:rgba(255,255,255,.1);color:#fff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:13px;}
 
 .filters-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;padding:16px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);}
@@ -138,19 +137,14 @@ button{cursor:pointer;}
 .purchase-list .material-symbols-outlined{color:var(--green);font-size:18px;}
 
 .login-wrap{min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg);}
-.login-card{width:100%;max-width:430px;padding:34px;text-align:center;}
-.auth-toggle{display:flex;background:var(--bg);border-radius:10px;padding:4px;margin:18px 0;}
-.auth-toggle button{flex:1;padding:9px;border-radius:8px;background:transparent;font-weight:700;font-size:13.5px;color:var(--muted);}
-.auth-toggle button.active{background:#fff;color:var(--blue);box-shadow:var(--shadow);}
-.role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
-.role-btn{padding:12px 6px;border:1.5px solid var(--border);border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);}
-.role-btn .material-symbols-outlined{font-size:22px;}
+.login-card{width:100%;max-width:420px;padding:34px;text-align:center;}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0;}
+.role-btn{padding:14px 6px;border:1.5px solid var(--border);border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted);}
+.role-btn .material-symbols-outlined{font-size:24px;}
 .role-btn.selected{border-color:var(--blue);background:var(--blue-light);color:var(--blue);}
 .login-field{text-align:right;margin-bottom:14px;}
 .login-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;}
 .login-field input{width:100%;height:42px;border:1px solid var(--border);border-radius:8px;padding:0 14px;}
-.auth-error{background:var(--red-bg);color:var(--red);font-size:13px;font-weight:700;padding:10px;border-radius:8px;margin-bottom:14px;text-align:right;}
-.demo-hint{background:var(--blue-light);color:var(--blue-dark);font-size:12.5px;padding:10px 12px;border-radius:8px;margin-top:16px;text-align:right;line-height:1.9;}
 
 .dash-shell{display:flex;min-height:100vh;align-items:stretch;}
 .dash-sidebar{width:250px;background:var(--navy);color:#aab3cc;flex-shrink:0;display:flex;flex-direction:column;padding:20px 14px;}
@@ -183,7 +177,6 @@ table.dt tr:last-child td{border-bottom:none;}
 .status-pill{padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;}
 .legend-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-top:8px;}
 .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-left:8px;}
-.empty-hint{color:var(--muted);font-size:13px;text-align:center;padding:24px 0;}
 
 .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
 .profile-panel{padding:20px;text-align:center;}
@@ -192,7 +185,6 @@ table.dt tr:last-child td{border-bottom:none;}
 .cal-grid .cal-day-name{color:var(--muted);font-weight:700;padding:4px 0;}
 .cal-grid .cal-cell{padding:6px 0;border-radius:6px;}
 .cal-grid .cal-cell.today{background:var(--blue);color:#fff;font-weight:700;}
-.cal-grid .cal-cell.has-session{box-shadow:inset 0 0 0 1.5px var(--blue);}
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:13.5px;font-weight:700;}
 .progress-row{margin-bottom:14px;}
 .progress-row .p-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
@@ -211,10 +203,6 @@ table.dt tr:last-child td{border-bottom:none;}
 
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;z-index:200;box-shadow:0 10px 25px rgba(0,0,0,.2);display:flex;align-items:center;gap:8px;opacity:0;transition:opacity .2s;}
 .toast.show{opacity:1;}
-.toast.error{background:var(--red);}
-.loading-block{padding:80px 0;text-align:center;color:var(--muted);}
-.spin{animation:spin 1s linear infinite;display:inline-block;}
-@keyframes spin{to{transform:rotate(360deg);}}
 
 @media(max-width:980px){
   .hero-inner{grid-template-columns:1fr;}
@@ -234,110 +222,43 @@ table.dt tr:last-child td{border-bottom:none;}
 <body>
 <div id="app"></div>
 <script>
-const API_BASE = '/api';
-let CATS = {
+const CATS = {
   'science': {name:'العلوم والهندسة', color:'#2f5fdd', bg:'#eaf1fd'},
   'industrial': {name:'القطاع الصناعي', color:'#0f9d78', bg:'#d7f5ec'},
   'pm': {name:'إدارة المشاريع', color:'#d97706', bg:'#fef3c7'},
   'safety': {name:'السلامة المهنية', color:'#7c3aed', bg:'#ede9fe'}
 };
-let token = localStorage.getItem('tm_token') || null;
-let currentUser = null;
-try { currentUser = JSON.parse(localStorage.getItem('tm_user') || 'null'); } catch(e) { currentUser = null; }
-let allCourses = [];
-let siteSettings = {
-  siteName: 'مركز تحسين مسارك للتدريب',
-  heroTitle: 'مركز تحسين مسارك للتدريب',
-  heroSubtitle: 'متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي، بمحتوى معتمد ومدربين خبراء لتطوير مهاراتك المهنية.',
-  heroBtnPrimary: 'استكشف الدورات',
-  heroBtnSecondary: 'عن المركز',
-  features: [
-    { icon:'support_agent', title:'دعم مستمر', desc:'نرافقك في رحلتك التعليمية' },
-    { icon:'workspace_premium', title:'محتوى احترافي', desc:'مناهج حديثة ومعتمدة عالمياً' },
-    { icon:'verified', title:'شهادات معتمدة', desc:'تعزز مسارك المهني' },
-    { icon:'groups', title:'مدربون معتمدون', desc:'خبرة عملية ومهارات تدريبية عالية' }
-  ],
-  footerAbout: 'متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي لتطوير مهاراتك وبناء مستقبلك المهني.',
-  contactPhone: '+966 50 123 4567',
-  contactEmail: 'info@tahseenmsarak.com',
-  contactAddress: 'الرياض، المملكة العربية السعودية',
-    featuredCoursesTitle: 'الدورات المميزة',
-        featuredCoursesSubtitle: 'اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة',
-        coursesPageTitle: 'جميع الدورات التدريبية',
-        coursesPageSubtitle: 'تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي',
-        footerCopyrightText: 'جميع الحقوق محفوظة',
-        logoImage: '',
-        heroBannerImage: '',
-        socialFacebook: '',
-        socialTwitter: '',
-        socialInstagram: '',
-        socialLinkedin: '',
-        socialWhatsapp: '',
-        socialYoutube: '',
-        courseCategories: [
-          {key:'science', name:'العلوم والهندسة', color:'#2f5fdd', bg:'#eaf1fd'},
-          {key:'industrial', name:'القطاع الصناعي', color:'#0f9d78', bg:'#d7f5ec'},
-          {key:'pm', name:'إدارة المشاريع', color:'#d97706', bg:'#fef3c7'},
-          {key:'safety', name:'السلامة المهنية', color:'#7c3aed', bg:'#ede9fe'}
-        ]
-};
-
-const state = { view:'home', courseId:1, detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'}, authMode:'login', regRole:'trainee' };
+const COURSES = [
+  {id:1,title:'الأتمتة الصناعية والتحكم PLC',cat:'industrial',price:1200,instructor:'م. محمد العتيبي',level:'متقدم',duration:'40 ساعة',students:320,rating:4.8,icon:'precision_manufacturing',desc:'دورة شاملة في أنظمة التحكم المنطقي القابل للبرمجة (PLC) تغطي التصميم والبرمجة والتشغيل لأنظمة الأتمتة الصناعية الحديثة المستخدمة في المصانع.'},
+  {id:2,title:'إدارة المشاريع الاحترافية PMP',cat:'pm',price:1500,instructor:'د. سارة القحطاني',level:'متوسط',duration:'35 ساعة',students:410,rating:4.9,icon:'assignment_turned_in',desc:'إعداد كامل لاجتياز اختبار PMP يغطي مجموعة المعارف PMBOK مع تطبيقات عملية على مشاريع حقيقية في القطاع الصناعي.'},
+  {id:3,title:'التصميم الهندسي AutoCAD',cat:'science',price:900,instructor:'م. خالد الشمري',level:'مبتدئ',duration:'30 ساعة',students:275,rating:4.7,icon:'architecture',desc:'تعلم أساسيات ومهارات الرسم الهندسي ثنائي وثلاثي الأبعاد باستخدام برنامج AutoCAD مع مشاريع تطبيقية.'},
+  {id:4,title:'السلامة والصحة المهنية',cat:'safety',price:750,instructor:'أ. نورة سعيد',level:'مبتدئ',duration:'20 ساعة',students:512,rating:4.6,icon:'health_and_safety',desc:'دورة معتمدة تغطي أسس السلامة المهنية، تقييم المخاطر، والإجراءات الوقائية في بيئات العمل الصناعية.'},
+  {id:5,title:'أساسيات الروبوتات الصناعية',cat:'industrial',price:1350,instructor:'م. محمد العتيبي',level:'متقدم',duration:'45 ساعة',students:190,rating:4.8,icon:'smart_toy',desc:'مقدمة تطبيقية في الروبوتات الصناعية وبرمجتها وتكاملها في خطوط الإنتاج الحديثة.'},
+  {id:6,title:'إدارة الجودة الشاملة TQM',cat:'pm',price:1100,instructor:'د. سارة القحطاني',level:'متوسط',duration:'25 ساعة',students:230,rating:4.5,icon:'verified',desc:'منهجيات إدارة الجودة الشاملة وأدوات تحسين العمليات الصناعية ورفع الكفاءة التشغيلية.'},
+  {id:7,title:'تحليل البيانات الهندسية',cat:'science',price:1050,instructor:'م. فيصل العلي',level:'متوسط',duration:'32 ساعة',students:300,rating:4.7,icon:'monitoring',desc:'استخدام أدوات تحليل البيانات لدعم القرارات الهندسية وتحسين أداء الأنظمة الصناعية.'},
+  {id:8,title:'السلامة الكهربائية في المصانع',cat:'safety',price:680,instructor:'أ. نورة سعيد',level:'مبتدئ',duration:'18 ساعة',students:260,rating:4.4,icon:'bolt',desc:'قواعد وإجراءات السلامة الكهربائية للعاملين في البيئات الصناعية وخطوط الإنتاج.'},
+  {id:9,title:'إدارة سلسلة الإمداد',cat:'pm',price:1250,instructor:'د. سارة القحطاني',level:'متقدم',duration:'28 ساعة',students:175,rating:4.6,icon:'local_shipping',desc:'تخطيط وإدارة سلاسل الإمداد والمخزون بكفاءة في المنشآت الصناعية والتجارية.'},
+  {id:10,title:'صيانة المعدات الصناعية',cat:'industrial',price:980,instructor:'م. خالد الشمري',level:'متوسط',duration:'30 ساعة',students:210,rating:4.5,icon:'construction',desc:'أساليب الصيانة الوقائية والتنبؤية للمعدات الصناعية لتقليل الأعطال وزيادة العمر الافتراضي.'},
+  {id:11,title:'أساسيات الذكاء الاصطناعي الصناعي',cat:'science',price:1400,instructor:'م. فيصل العلي',level:'متقدم',duration:'38 ساعة',students:150,rating:4.9,icon:'memory',desc:'تطبيقات الذكاء الاصطناعي وتعلم الآلة في التصنيع الذكي والصيانة التنبؤية.'},
+  {id:12,title:'إدارة المخاطر المهنية',cat:'safety',price:820,instructor:'أ. نورة سعيد',level:'متوسط',duration:'22 ساعة',students:198,rating:4.6,icon:'shield',desc:'منهجيات تحديد وتقييم ومعالجة المخاطر المهنية في بيئات العمل الصناعية.'}
+];
+const REVIEWS = [
+  {name:'أحمد محمد',rating:5,text:'محتوى الدورة ممتاز والمدرب شرح كل التفاصيل بطريقة عملية سهلة الفهم.'},
+  {name:'سارة عبدالله',rating:4,text:'استفدت كثيراً من التطبيقات العملية، أتمنى لو كانت المدة أطول قليلاً.'},
+  {name:'خالد ناصر',rating:5,text:'من أفضل الدورات التي حضرتها، الشهادة معتمدة وساعدتني في العمل مباشرة.'}
+];
+const state = { view:'home', courseId:1, role:null, roleSelect:'admin', detailTab:'content', filters:{q:'',cat:'all',level:'all',sort:'popular'} };
 const charts = {};
 
-async function api(path, opts){
-  opts = opts || {};
-  const headers = Object.assign({'Content-Type':'application/json'}, opts.headers || {});
-  if (token) headers['Authorization'] = 'Bearer ' + token;
-  const res = await fetch(API_BASE + path, Object.assign({}, opts, { headers: headers }));
-  let data = {};
-  try { data = await res.json(); } catch(e) {}
-  if (!res.ok) throw new Error(data.error || 'حدث خطأ غير متوقع، حاول مرة أخرى');
-  return data;
-}
-
-function telHref(p){ return 'tel:' + String(p||'').replace(/[^0-9+]/g,''); }
-function rebuildCats(){
-  if (siteSettings.courseCategories && siteSettings.courseCategories.length){
-    CATS = {};
-    siteSettings.courseCategories.forEach(c => { CATS[c.key] = { name: c.name, color: c.color, bg: c.bg || (c.color+'22') }; });
-  }
-}
-function categoryRowHTML(cat){
-  cat = cat || {key:'', name:'', color:'#2f5fdd'};
-  return '<div class="category-row" data-key="'+esc(cat.key||'')+'" style="display:flex;align-items:center;gap:10px;margin-bottom:10px">'
-    + '<input type="color" class="cat-color-input" value="'+(cat.color||'#2f5fdd')+'" style="width:44px;height:38px;padding:2px;border-radius:8px;cursor:pointer">'
-    + '<input type="text" class="cat-name-input" value="'+esc(cat.name||'')+'" placeholder="اسم التصنيف" style="flex:1">'
-    + '<button type="button" class="btn btn-outline" onclick="removeCategoryRow(this)">'+icon('delete',18)+'</button>'
-    + '</div>';
-}
-function removeCategoryRow(btn){ btn.closest('.category-row').remove(); }
-function addCategoryRow(){
-  const container = document.getElementById('categoriesContainer');
-  if (container) container.insertAdjacentHTML('beforeend', categoryRowHTML(null));
-}
-
-async function loadSettings(){
-  try {
-    const data = await api('/settings');
-    if (data.settings && Object.keys(data.settings).length) siteSettings = data.settings;
-    rebuildCats();
-  } catch(e) {}
-}
-
-function esc(str){
-  return (str==null?'':String(str)).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
 function nav(view, extra){ if(extra) Object.assign(state, extra); state.view = view; render(); window.scrollTo(0,0); }
-function logout(){ token=null; currentUser=null; localStorage.removeItem('tm_token'); localStorage.removeItem('tm_user'); nav('home'); }
-function showToast(msg, isError){
+function logout(){ state.role = null; nav('home'); }
+function showToast(msg){
   const t = document.createElement('div');
-  t.className = 'toast' + (isError?' error':'');
-  t.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px">'+(isError?'error':'check_circle')+'</span>' + msg;
+  t.className = 'toast';
+  t.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px">check_circle</span>' + msg;
   document.body.appendChild(t);
   requestAnimationFrame(()=>t.classList.add('show'));
-  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),250); }, 2600);
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),250); }, 2400);
 }
 function stars(r){
   const full = Math.round(r);
@@ -345,20 +266,20 @@ function stars(r){
   for(let i=0;i<5;i++) s += '<span class="material-symbols-outlined" style="font-size:15px">' + (i<full?'star':'star_outline') + '</span>';
   return s;
 }
-function money(n){ return Number(n||0).toLocaleString('ar-SA'); }
+function money(n){ return n.toLocaleString('ar-SA'); }
+
 function icon(name, size){ return '<span class="material-symbols-outlined" style="font-size:'+(size||22)+'px">'+name+'</span>'; }
-function initials(name){ return (name||'').trim().split(' ').map(w=>w[0]).join('').slice(0,2); }
 
 function header(activePage){
-  const loggedActions = currentUser
-    ? '<button class="btn btn-outline" onclick="nav(currentUser.role)">'+icon('dashboard',18)+' لوحة التحكم</button><button class="btn btn-primary" onclick="logout()">'+icon('logout',18)+' خروج</button>'
+  const loggedActions = state.role
+    ? '<button class="btn btn-outline" onclick="nav(state.role)">'+icon('dashboard',18)+' لوحة التحكم</button><button class="btn btn-primary" onclick="logout()">'+icon('logout',18)+' خروج</button>'
     : '<button class="btn btn-primary" onclick="nav(\'login\')">'+icon('login',18)+' تسجيل الدخول</button>';
   return `
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo" onclick="nav('home')">
-        <div class="logo-mark">${siteSettings.logoImage ? '<img src="'+esc(siteSettings.logoImage)+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' : icon('school',20)}</div>
-        <span>${siteSettings.siteName}</span>
+        <div class="logo-mark">${icon('school',20)}</div>
+        <span>مركز تحسين مسارك<br><small style="font-weight:500;color:var(--muted);font-size:11px">للتدريب</small></span>
       </div>
       <nav class="main-nav">
         <a class="${activePage==='home'?'active':''}" onclick="nav('home')">الرئيسية</a>
@@ -377,21 +298,22 @@ function footer(){
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h5>${siteSettings.siteName}</h5>
-          <p>${siteSettings.footerAbout}</p>
+          <h5>مركز تحسين مسارك للتدريب</h5>
+          <p>متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي لتطوير مهاراتك وبناء مستقبلك المهني.</p>
           <div class="footer-social">
-            ${siteSettings.socialFacebook ? '<a href="'+esc(siteSettings.socialFacebook)+'" target="_blank" rel="noopener">'+icon('groups',16)+'</a>' : ''}
-            ${siteSettings.socialTwitter ? '<a href="'+esc(siteSettings.socialTwitter)+'" target="_blank" rel="noopener">'+icon('alternate_email',16)+'</a>' : ''}
-            ${siteSettings.socialInstagram ? '<a href="'+esc(siteSettings.socialInstagram)+'" target="_blank" rel="noopener">'+icon('photo_camera',16)+'</a>' : ''}
-            ${siteSettings.socialLinkedin ? '<a href="'+esc(siteSettings.socialLinkedin)+'" target="_blank" rel="noopener">'+icon('work',16)+'</a>' : ''}
-            ${siteSettings.socialWhatsapp ? '<a href="'+esc(siteSettings.socialWhatsapp)+'" target="_blank" rel="noopener">'+icon('chat',16)+'</a>' : ''}
-            ${siteSettings.socialYoutube ? '<a href="'+esc(siteSettings.socialYoutube)+'" target="_blank" rel="noopener">'+icon('play_circle',16)+'</a>' : ''}
+            <a href="#">${icon('link',16)}</a>
+            <a href="#">${icon('alternate_email',16)}</a>
+            <a href="#">${icon('photo_camera',16)}</a>
+            <a href="#">${icon('groups',16)}</a>
           </div>
         </div>
         <div>
           <h5>الدورات</h5>
           <ul>
-            ${Object.entries(CATS).map(([k,v])=>`<li><a onclick="nav('courses',{filters:{...state.filters,cat:'${k}'}})">${v.name}</a></li>`).join('')}
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'science'}})">العلوم والهندسة</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'industrial'}})">القطاع الصناعي</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'pm'}})">إدارة المشاريع</a></li>
+            <li><a onclick="nav('courses',{filters:{...state.filters,cat:'safety'}})">السلامة المهنية</a></li>
           </ul>
         </div>
         <div>
@@ -405,18 +327,18 @@ function footer(){
         </div>
         <div id="about-section">
           <h5>تواصل معنا</h5>
-          <div class="footer-contact"><a href="${telHref(siteSettings.contactPhone)}">${icon('call',16)} ${siteSettings.contactPhone}</a></div>
-          <div class="footer-contact"><a href="mailto:${siteSettings.contactEmail}">${icon('mail',16)} ${siteSettings.contactEmail}</a></div>
-          <div class="footer-contact"><a href="https://www.google.com/maps/search/${encodeURIComponent(siteSettings.contactAddress)}" target="_blank" rel="noopener">${icon('location_on',16)} ${siteSettings.contactAddress}</a></div>
+          <div class="footer-contact">${icon('call',16)} +966 50 123 4567</div>
+          <div class="footer-contact">${icon('mail',16)} info@tahseenmsarak.com</div>
+          <div class="footer-contact">${icon('location_on',16)} الرياض، المملكة العربية السعودية</div>
         </div>
       </div>
-            <div class="footer-bottom">${siteSettings.siteName} © ${new Date().getFullYear()}. ${siteSettings.footerCopyrightText}.</div>
+      <div class="footer-bottom">مركز تحسين مسارك للتدريب © 2026. جميع الحقوق محفوظة.</div>
     </div>
   </footer>`;
 }
 
 function courseThumb(c, big){
-  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
+  const cc = CATS[c.cat];
   return `<div class="course-thumb" style="background:${cc.bg};color:${cc.color}">
     ${icon(c.icon, big?70:52)}
     ${!big?`<span class="badge course-cat-badge" style="color:${cc.color}">${cc.name}</span>`:''}
@@ -424,7 +346,7 @@ function courseThumb(c, big){
 }
 
 function courseCard(c){
-  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
+  const cc = CATS[c.cat];
   return `
   <div class="card course-card" onclick="nav('courseDetail',{courseId:${c.id},detailTab:'content'})">
     ${courseThumb(c)}
@@ -438,56 +360,42 @@ function courseCard(c){
       <div class="course-meta">${stars(c.rating)} <span>${c.rating}</span> · ${icon('group',16)} ${c.students}</div>
       <div class="course-foot">
         <div class="course-price">${money(c.price)} <span>ر.س</span></div>
-        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();quickEnroll(${c.id})">${icon('shopping_cart',16)} شراء الآن</button>
+        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showToast('تمت إضافة الدورة إلى طلباتك')">${icon('shopping_cart',16)} شراء الآن</button>
       </div>
     </div>
   </div>`;
 }
 
-async function quickEnroll(courseId){
-  if (!currentUser) { showToast('يرجى تسجيل الدخول كمتدرب أولاً', true); nav('login'); return; }
-  if (currentUser.role !== 'trainee') { showToast('التسجيل في الدورات متاح لحسابات المتدربين فقط', true); return; }
-  try {
-    await api('/courses/' + courseId + '/enroll', { method:'POST' });
-    showToast('تمت إضافة الدورة إلى حسابك بنجاح');
-    await loadCourses();
-    if (state.view === 'courses') renderCoursesGrid();
-  } catch(e) { showToast(e.message, true); }
-}
-
-async function loadCourses(){
-  const data = await api('/courses');
-  allCourses = data.courses;
-}
-
-async function viewHome(){
-  if (!allCourses.length) await loadCourses();
-  const featured = allCourses.slice(0,4);
+function viewHome(){
+  const featured = COURSES.slice(0,4);
   return `
   ${header('home')}
   <section class="hero">
     <div class="hero-inner">
       <div>
-        <h1>${siteSettings.heroTitle}</h1>
-        <p>${siteSettings.heroSubtitle}</p>
+        <h1>مركز تحسين <span>مسارك</span> للتدريب</h1>
+        <p>متخصصون في تقديم برامج تدريبية احترافية في العلوم والهندسة والقطاع الصناعي، بمحتوى معتمد ومدربين خبراء لتطوير مهاراتك المهنية.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary" onclick="nav('courses')">${icon('search',18)} ${siteSettings.heroBtnPrimary}</button>
-          <button class="btn btn-ghost-light" onclick="document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})">${siteSettings.heroBtnSecondary}</button>
+          <button class="btn btn-primary" onclick="nav('courses')">${icon('search',18)} استكشف الدورات</button>
+          <button class="btn btn-ghost-light" onclick="document.getElementById('about-section')?.scrollIntoView({behavior:'smooth'})">عن المركز</button>
         </div>
       </div>
-      <div class="hero-visual">${siteSettings.heroBannerImage ? '<img src="'+esc(siteSettings.heroBannerImage)+'" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">' : icon('engineering',120)}</div>
+      <div class="hero-visual">${icon('engineering',120)}</div>
     </div>
   </section>
   <div class="container">
     <div class="features-row">
-      ${(siteSettings.features||[]).map(f=>`<div class="feature-item"><div class="feature-icon">${icon(f.icon)}</div><div><h4>${f.title}</h4><p>${f.desc}</p></div></div>`).join('')}
+      <div class="feature-item"><div class="feature-icon">${icon('support_agent')}</div><div><h4>دعم مستمر</h4><p>نرافقك في رحلتك التعليمية</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('workspace_premium')}</div><div><h4>محتوى احترافي</h4><p>مناهج حديثة ومعتمدة عالمياً</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('verified')}</div><div><h4>شهادات معتمدة</h4><p>تعزز مسارك المهني</p></div></div>
+      <div class="feature-item"><div class="feature-icon">${icon('groups')}</div><div><h4>مدربون معتمدون</h4><p>خبرة عملية ومهارات تدريبية عالية</p></div></div>
     </div>
   </div>
   <section class="section" style="background:#fff">
     <div class="container">
       <div class="section-head">
-                <div class="section-title">${siteSettings.featuredCoursesTitle}</div>
-                        <div class="section-sub">${siteSettings.featuredCoursesSubtitle}</div>
+        <div class="section-title">الدورات المميزة</div>
+        <div class="section-sub">اختر من مجموعة متنوعة من الدورات التدريبية المتخصصة</div>
       </div>
       <div class="course-grid">${featured.map(courseCard).join('')}</div>
       <div style="text-align:center;margin-top:28px"><button class="btn btn-outline" onclick="nav('courses')">عرض جميع الدورات ${icon('arrow_back',18)}</button></div>
@@ -506,7 +414,7 @@ function updateFilters(){
 }
 
 function filteredCourses(){
-  let list = allCourses.filter(c=>{
+  let list = COURSES.filter(c=>{
     const q = state.filters.q.trim();
     if(q && !c.title.includes(q) && !c.instructor.includes(q)) return false;
     if(state.filters.cat!=='all' && c.cat!==state.filters.cat) return false;
@@ -522,24 +430,20 @@ function filteredCourses(){
 
 function renderCoursesGrid(){
   const list = filteredCourses();
-  const countEl = document.getElementById('resultsCount');
-  const gridEl = document.getElementById('coursesGrid');
-  if (!countEl || !gridEl) return;
-  countEl.textContent = `عرض ${list.length} من أصل ${allCourses.length} دورة`;
-  gridEl.innerHTML = list.length
+  document.getElementById('resultsCount').textContent = `عرض ${list.length} من أصل ${COURSES.length} دورة`;
+  document.getElementById('coursesGrid').innerHTML = list.length
     ? list.map(courseCard).join('')
     : `<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0">${icon('search_off',34)}<div style="margin-top:8px">لا توجد دورات مطابقة لبحثك</div></div>`;
 }
 
-async function viewCourses(){
-  if (!allCourses.length) await loadCourses();
+function viewCourses(){
   return `
   ${header('courses')}
   <div class="container" style="padding-top:24px">
     <div class="breadcrumb"><a onclick="nav('home')">الرئيسية</a> ${icon('chevron_left',16)} <span>الدورات</span></div>
     <div class="section-head" style="align-items:flex-start;text-align:right;margin-bottom:20px">
-            <div class="section-title">${siteSettings.coursesPageTitle}</div>
-                  <div class="section-sub">${siteSettings.coursesPageSubtitle}</div>
+      <div class="section-title">جميع الدورات التدريبية</div>
+      <div class="section-sub">تصفح مكتبتنا الكاملة من الدورات المتخصصة في العلوم والهندسة والقطاع الصناعي</div>
     </div>
     <div class="filters-bar">
       <div class="search-wrap">
@@ -570,16 +474,11 @@ async function viewCourses(){
   `;
 }
 
-async function viewCourseDetail(){
-  let data;
-  try { data = await api('/courses/' + state.courseId); }
-  catch(e) { return `${header('courses')}<div class="container" style="padding:60px 0;text-align:center;color:var(--muted)">الدورة غير موجودة</div>${footer()}`; }
-  const c = data.course;
-  const cc = CATS[c.cat] || {name:'عام',color:'#64748b',bg:'#f1f5f9'};
-  const modules = data.modules;
-  const reviews = data.reviews;
-  if (!allCourses.length) await loadCourses();
-  const related = allCourses.filter(x=>x.cat===c.cat && x.id!==c.id).slice(0,4);
+function viewCourseDetail(){
+  const c = COURSES.find(x=>x.id===state.courseId) || COURSES[0];
+  const cc = CATS[c.cat];
+  const modules = ['مقدمة في الدورة والأهداف التدريبية','الأساسيات النظرية والمفاهيم الرئيسية','التطبيق العملي على أمثلة حقيقية','دراسة حالة ومشروع تطبيقي','المراجعة والاختبار النهائي'];
+  const related = COURSES.filter(x=>x.cat===c.cat && x.id!==c.id).slice(0,4);
   return `
   ${header('courses')}
   <section class="detail-hero">
@@ -602,7 +501,7 @@ async function viewCourseDetail(){
           <div class="detail-tabs">
             <div class="detail-tab ${state.detailTab==='content'?'active':''}" onclick="state.detailTab='content';render()">محتوى الدورة</div>
             <div class="detail-tab ${state.detailTab==='desc'?'active':''}" onclick="state.detailTab='desc';render()">نظرة عامة</div>
-            <div class="detail-tab ${state.detailTab==='reviews'?'active':''}" onclick="state.detailTab='reviews';render()">التقييمات (${reviews.length})</div>
+            <div class="detail-tab ${state.detailTab==='reviews'?'active':''}" onclick="state.detailTab='reviews';render()">التقييمات</div>
           </div>
           ${state.detailTab==='content' ? `
             <div>${modules.map((m,i)=>`
@@ -620,11 +519,11 @@ async function viewCourseDetail(){
               <div style="display:flex;align-items:center;gap:8px;font-size:13.5px">${icon('workspace_premium',18)} شهادة إتمام معتمدة</div>
             </div>` : ''}
           ${state.detailTab==='reviews' ? `
-            <div>${reviews.length ? reviews.map(r=>`
+            <div>${REVIEWS.map(r=>`
               <div class="review-item">
-                <div class="review-head"><div class="avatar-circle">${initials(r.name)}</div><div><div style="font-weight:700;font-size:13.5px">${r.name}</div><div class="stars">${stars(r.rating)}</div></div></div>
-                <p style="font-size:13.5px;color:var(--text)">${r.text||''}</p>
-              </div>`).join('') : `<div class="empty-hint">لا توجد تقييمات بعد على هذه الدورة</div>`}
+                <div class="review-head"><div class="avatar-circle">${r.name.split(' ').map(w=>w[0]).join('').slice(0,2)}</div><div><div style="font-weight:700;font-size:13.5px">${r.name}</div><div class="stars">${stars(r.rating)}</div></div></div>
+                <p style="font-size:13.5px;color:var(--text)">${r.text}</p>
+              </div>`).join('')}
             </div>` : ''}
         </div>
       </div>
@@ -638,7 +537,7 @@ async function viewCourseDetail(){
             <li>${icon('check_circle',18)} تدريب عملي وتطبيقات واقعية</li>
             <li>${icon('check_circle',18)} دعم فني ومتابعة من المدرب</li>
           </ul>
-          <button class="btn btn-primary btn-block" onclick="quickEnroll(${c.id})">${icon('shopping_cart',18)} شراء الآن</button>
+          <button class="btn btn-primary btn-block" onclick="showToast('تمت إضافة الدورة إلى طلباتك')">${icon('shopping_cart',18)} شراء الآن</button>
         </div>
       </div>
     </div>
@@ -652,136 +551,45 @@ async function viewCourseDetail(){
   `;
 }
 
-function selectRegRole(r){ state.regRole = r; render(); }
-function setAuthMode(m){ state.authMode = m; state.authError = null; render(); }
-
-async function doLogin(ev){
-  ev.preventDefault();
-  const email = document.getElementById('authEmail').value.trim();
-  const password = document.getElementById('authPassword').value;
-  try {
-    const data = await api('/auth/login', { method:'POST', body: JSON.stringify({ email, password }) });
-    token = data.token; currentUser = data.user;
-    localStorage.setItem('tm_token', token);
-    localStorage.setItem('tm_user', JSON.stringify(currentUser));
-    showToast('مرحباً بعودتك، ' + currentUser.name);
-    nav(currentUser.role);
-  } catch(e) {
-    state.authError = e.message;
-    render();
-  }
-}
-
-async function doRegister(ev){
-  ev.preventDefault();
-  const name = document.getElementById('regName').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const phone = document.getElementById('regPhone').value.trim();
-  const password = document.getElementById('regPassword').value;
-  try {
-    const data = await api('/auth/register', { method:'POST', body: JSON.stringify({ name, email, phone, password, role: state.regRole }) });
-    token = data.token; currentUser = data.user;
-    localStorage.setItem('tm_token', token);
-    localStorage.setItem('tm_user', JSON.stringify(currentUser));
-    showToast('تم إنشاء حسابك بنجاح، أهلاً بك ' + currentUser.name);
-    nav(currentUser.role);
-  } catch(e) {
-    state.authError = e.message;
-    render();
-  }
-}
-
-function fillDemo(role){
-  const creds = {
-    admin: ['admin@tahseenmsarak.com','admin123'],
-    instructor: ['mohammed@tahseenmsarak.com','instructor123'],
-    trainee: ['abdullah@example.com','trainee123']
-  };
-  state.authMode = 'login';
-  render();
-  setTimeout(()=>{
-    document.getElementById('authEmail').value = creds[role][0];
-    document.getElementById('authPassword').value = creds[role][1];
-  }, 30);
-}
+function selectRole(r){ state.roleSelect = r; render(); }
+function doLogin(){ state.role = state.roleSelect; nav(state.roleSelect); }
 
 function viewLogin(){
-  const err = state.authError ? `<div class="auth-error">${state.authError}</div>` : '';
-  const loginForm = `
-    <form onsubmit="doLogin(event)">
-      ${err}
-      <div class="login-field">
-        <label>البريد الإلكتروني</label>
-        <input id="authEmail" type="email" placeholder="name@example.com" required>
-      </div>
-      <div class="login-field">
-        <label>كلمة المرور</label>
-        <input id="authPassword" type="password" required>
-      </div>
-      <button class="btn btn-primary btn-block" type="submit">${icon('login',18)} تسجيل الدخول</button>
-    </form>
-    <div class="demo-hint">
-      ${icon('info',16)} حسابات تجريبية جاهزة:<br>
-      <a onclick="fillDemo('admin')" style="color:var(--blue-dark);font-weight:700">مدير</a> ·
-      <a onclick="fillDemo('instructor')" style="color:var(--blue-dark);font-weight:700">مدرب</a> ·
-      <a onclick="fillDemo('trainee')" style="color:var(--blue-dark);font-weight:700">متدرب</a>
-    </div>`;
-  const registerForm = `
-    <form onsubmit="doRegister(event)">
-      ${err}
-      <div class="role-grid">
-        <div class="role-btn ${state.regRole==='trainee'?'selected':''}" onclick="selectRegRole('trainee')">${icon('person',22)}<span>متدرب</span></div>
-        <div class="role-btn ${state.regRole==='instructor'?'selected':''}" onclick="selectRegRole('instructor')">${icon('cast_for_education',22)}<span>مدرب</span></div>
-      </div>
-      <div class="login-field">
-        <label>الاسم الكامل</label>
-        <input id="regName" type="text" required>
-      </div>
-      <div class="login-field">
-        <label>البريد الإلكتروني</label>
-        <input id="regEmail" type="email" required>
-      </div>
-      <div class="login-field">
-        <label>رقم الجوال (اختياري)</label>
-        <input id="regPhone" type="tel">
-      </div>
-      <div class="login-field">
-        <label>كلمة المرور</label>
-        <input id="regPassword" type="password" minlength="6" required>
-      </div>
-      <button class="btn btn-primary btn-block" type="submit">${icon('person_add',18)} إنشاء الحساب</button>
-    </form>`;
+  const roles = [
+    {k:'admin',label:'مدير النظام',ic:'admin_panel_settings'},
+    {k:'instructor',label:'مدرب',ic:'cast_for_education'},
+    {k:'trainee',label:'متدرب',ic:'person'}
+  ];
   return `
   ${header('login')}
   <div class="login-wrap">
     <div class="card login-card">
       <div class="logo-mark" style="margin:0 auto 14px">${icon('school',22)}</div>
-      <div style="font-size:19px;font-weight:800">أهلاً بك</div>
-      <div style="color:var(--muted);font-size:13.5px;margin-top:4px">سجّل الدخول أو أنشئ حساباً جديداً للوصول إلى لوحتك</div>
-      <div class="auth-toggle">
-        <button class="${state.authMode==='login'?'active':''}" onclick="setAuthMode('login')">تسجيل الدخول</button>
-        <button class="${state.authMode==='register'?'active':''}" onclick="setAuthMode('register')">حساب جديد</button>
+      <div style="font-size:19px;font-weight:800">تسجيل الدخول</div>
+      <div style="color:var(--muted);font-size:13.5px;margin-top:4px">اختر نوع الحساب لمعاينة لوحة التحكم الخاصة به</div>
+      <div class="role-grid">
+        ${roles.map(r=>`<div class="role-btn ${state.roleSelect===r.k?'selected':''}" onclick="selectRole('${r.k}')">${icon(r.ic,24)}<span>${r.label}</span></div>`).join('')}
       </div>
-      ${state.authMode==='login' ? loginForm : registerForm}
+      <div class="login-field">
+        <label>البريد الإلكتروني</label>
+        <input type="email" placeholder="name@example.com" value="demo@tahseenmsarak.com">
+      </div>
+      <div class="login-field">
+        <label>كلمة المرور</label>
+        <input type="password" value="demo1234">
+      </div>
+      <button class="btn btn-primary btn-block" onclick="doLogin()">${icon('login',18)} دخول إلى اللوحة</button>
       <div style="margin-top:16px"><a onclick="nav('home')" style="color:var(--blue);font-size:13.5px">${icon('arrow_forward',16)} العودة للصفحة الرئيسية</a></div>
     </div>
   </div>
   `;
 }
 
-function requireRoleOrRedirect(role){
-  if (!currentUser || currentUser.role !== role) {
-    setTimeout(()=>{ showToast('يرجى تسجيل الدخول للوصول إلى هذه الصفحة', true); nav('login'); }, 0);
-    return false;
-  }
-  return true;
-}
-
 function sidebar(role, active){
   const menus = {
     admin: [
       {k:'admin',ic:'dashboard',label:'لوحة التحكم'},
-      {k:'courses',ic:'menu_book',label:'الدورات'},
+      {k:'admin-courses',ic:'menu_book',label:'إدارة الدورات'},
       {k:'trainees',ic:'groups',label:'المتدربون'},
       {k:'instructors',ic:'cast_for_education',label:'المدربون'},
       {k:'payments',ic:'payments',label:'الطلبات والدفع'},
@@ -807,31 +615,26 @@ function sidebar(role, active){
   };
   return `
   <div class="dash-sidebar">
-    <div class="dash-logo" onclick="nav('home')">${icon('school',22)}<span class="lbl-text">${siteSettings.siteName}</span></div>
+    <div class="dash-logo" onclick="nav('home')">${icon('school',22)}<span class="lbl-text">مركز تحسين مسارك</span></div>
     <div class="dash-nav">
-      ${menus[role].map(m=>{
-        const target = (role==='admin' && m.k==='settings') ? 'adminSettings' : role;
-        return `<a class="${active===m.k?'active':''}" onclick="nav('${target}')">${icon(m.ic,20)}<span class="lbl-text">${m.label}</span></a>`;
-      }).join('')}
+      ${menus[role].map(m=>`<a class="${active===m.k?'active':''}" onclick="nav('${role}')">${icon(m.ic,20)}<span class="lbl-text">${m.label}</span></a>`).join('')}
       <a class="logout" onclick="logout()">${icon('logout',20)}<span class="lbl-text">تسجيل الخروج</span></a>
     </div>
   </div>`;
 }
 
-function monthCalendar(sessionDays){
+function monthCalendar(highlightToday){
   const now = new Date();
   const y = now.getFullYear(), m = now.getMonth();
   const first = new Date(y,m,1);
   const startOffset = first.getDay();
   const daysInMonth = new Date(y,m+1,0).getDate();
   const dayNames = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
-  const sessionSet = new Set((sessionDays||[]).map(d=>Number(d.split('-')[2])));
   let cells = '';
   for(let i=0;i<startOffset;i++) cells += '<div class="cal-cell"></div>';
   for(let d=1; d<=daysInMonth; d++){
-    const isToday = d===now.getDate();
-    const hasSession = sessionSet.has(d);
-    cells += `<div class="cal-cell ${isToday?'today':''} ${hasSession&&!isToday?'has-session':''}">${d}</div>`;
+    const isToday = highlightToday && d===now.getDate();
+    cells += `<div class="cal-cell ${isToday?'today':''}">${d}</div>`;
   }
   const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
   return `
@@ -842,28 +645,27 @@ function monthCalendar(sessionDays){
   </div>`;
 }
 
-async function viewAdmin(){
-  if (!requireRoleOrRedirect('admin')) return `${header('admin')}<div class="loading-block">جارِ التحويل...</div>`;
-  const [stats, dist, registrationsData] = await Promise.all([
-    api('/admin/stats'), api('/admin/category-distribution'), api('/admin/registrations')
-  ]);
-  const registrations = registrationsData.registrations;
-  const distMap = {};
-  dist.distribution.forEach(d => distMap[d.category] = d.pct);
-
+function viewAdmin(){
+  const registrations = [
+    {name:'أحمد محمد',course:'الأتمتة الصناعية PLC',date:'2026-07-15',status:'مكتمل'},
+    {name:'سارة عبدالله',course:'إدارة المشاريع PMP',date:'2026-07-15',status:'مكتمل'},
+    {name:'خالد ناصر',course:'التصميم الهندسي AutoCAD',date:'2026-07-14',status:'قيد المراجعة'},
+    {name:'نورة سعيد',course:'السلامة والصحة المهنية',date:'2026-07-14',status:'مكتمل'},
+    {name:'فيصل علي',course:'الأتمتة الصناعية PLC',date:'2026-07-13',status:'مكتمل'}
+  ];
   return `
   <div class="dash-shell">
     ${sidebar('admin','admin')}
     <div class="dash-main">
       <div class="dash-topbar">
         <h2>لوحة التحكم - المدير</h2>
-        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+        <div class="dash-user"><div class="avatar-circle">م</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، المدير</div></div></div>
       </div>
       <div class="stat-grid">
-        <div class="card stat-card"><div class="lbl">عدد المتدربين</div><div class="val">${stats.trainees.toLocaleString('ar-SA')}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.trainees}% من الشهر الماضي</div></div>
-        <div class="card stat-card"><div class="lbl">الدورات النشطة</div><div class="val">${stats.activeCourses}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.activeCourses}% من الشهر الماضي</div></div>
-        <div class="card stat-card"><div class="lbl">الإيرادات</div><div class="val">${money(stats.revenue)} ر.س</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.revenue}% من الشهر الماضي</div></div>
-        <div class="card stat-card"><div class="lbl">طلبات جديدة (30 يوم)</div><div class="val">${stats.newOrders}</div><div class="delta up">${icon('trending_up',14)} +${stats.deltas.newOrders}% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">عدد المتدربين</div><div class="val">2,458</div><div class="delta up">${icon('trending_up',14)} +12.5% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">الدورات النشطة</div><div class="val">48</div><div class="delta up">${icon('trending_up',14)} +8.3% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">الإيرادات</div><div class="val">156,780 ر.س</div><div class="delta up">${icon('trending_up',14)} +15.7% من الشهر الماضي</div></div>
+        <div class="card stat-card"><div class="lbl">طلبات جديدة</div><div class="val">76</div><div class="delta up">${icon('trending_up',14)} +9.1% من الشهر الماضي</div></div>
       </div>
       <div class="two-col">
         <div class="card panel">
@@ -874,229 +676,64 @@ async function viewAdmin(){
           <h3>توزيع الدورات حسب التصنيف</h3>
           <div style="height:170px"><canvas id="catChart"></canvas></div>
           <div>
-            ${Object.entries(CATS).map(([k,v])=>`<div class="legend-row"><span><span class="legend-dot" style="background:${v.color}"></span>${v.name}</span><b>${distMap[k]||0}%</b></div>`).join('')}
+            <div class="legend-row"><span><span class="legend-dot" style="background:#2f5fdd"></span>العلوم والهندسة</span><b>40%</b></div>
+            <div class="legend-row"><span><span class="legend-dot" style="background:#0f9d78"></span>القطاع الصناعي</span><b>30%</b></div>
+            <div class="legend-row"><span><span class="legend-dot" style="background:#d97706"></span>إدارة المشاريع</span><b>20%</b></div>
+            <div class="legend-row"><span><span class="legend-dot" style="background:#7c3aed"></span>السلامة المهنية</span><b>10%</b></div>
           </div>
         </div>
       </div>
       <div class="card panel">
         <h3>أحدث التسجيلات</h3>
-        ${registrations.length ? `
         <table class="dt">
           <thead><tr><th>الاسم</th><th>الدورة</th><th>تاريخ التسجيل</th><th>الحالة</th></tr></thead>
           <tbody>
-            ${registrations.map(r=>`<tr><td>${r.trainee_name}</td><td>${r.course_title}</td><td>${r.enrolled_at.slice(0,10)}</td><td><span class="status-pill" style="background:${r.status==='completed'?'var(--green-bg)':'var(--amber-bg)'};color:${r.status==='completed'?'var(--green)':'var(--amber)'}">${r.status==='completed'?'مكتمل':'نشط'}</span></td></tr>`).join('')}
+            ${registrations.map(r=>`<tr><td>${r.name}</td><td>${r.course}</td><td>${r.date}</td><td><span class="status-pill" style="background:${r.status==='مكتمل'?'var(--green-bg)':'var(--amber-bg)'};color:${r.status==='مكتمل'?'var(--green)':'var(--amber)'}">${r.status}</span></td></tr>`).join('')}
           </tbody>
-        </table>` : `<div class="empty-hint">لا توجد تسجيلات بعد</div>`}
+        </table>
       </div>
     </div>
   </div>`;
 }
 
-async function viewAdminSettings(){
-  if (!requireRoleOrRedirect('admin')) return `${header('admin')}<div class="loading-block">جارِ التحويل...</div>`;
-  await loadSettings();
-  const s = siteSettings;
-  const feats = s.features || [];
-  return `
-  <div class="dash-shell">
-    ${sidebar('admin','settings')}
-    <div class="dash-main">
-      <div class="dash-topbar">
-        <h2>تخصيص الواجهة الرئيسية</h2>
-        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
-      </div>
-      <div class="card panel" style="max-width:760px">
-        <h3>الشعار والبانر الرئيسي</h3>
-        <div class="login-field">
-          <label>شعار الموقع (Logo)</label>
-          <div style="display:flex;align-items:center;gap:12px;margin-top:6px">
-            <div id="logoPreviewBox" style="width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--navy2);display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.logoImage ? '<img src="'+esc(s.logoImage)+'" style="width:100%;height:100%;object-fit:cover">' : icon('school',28)}</div>
-            <button type="button" class="btn btn-outline" onclick="document.getElementById('logoFileInput').click()">${icon('upload',18)} رفع صورة</button>
-            <button type="button" class="btn btn-outline" onclick="removeSettingsImage('logo')">${icon('delete',18)} إزالة</button>
-            <input type="file" id="logoFileInput" accept="image/*" style="display:none" onchange="handleSettingsImageUpload(event,'logo')">
-          </div>
-        </div>
-        <div class="login-field" style="margin-bottom:0">
-          <label>صورة البانر الرئيسي (القسم العلوي بالصفحة الرئيسية)</label>
-          <div style="display:flex;align-items:center;gap:12px;margin-top:6px">
-            <div id="bannerPreviewBox" style="width:110px;height:64px;border-radius:10px;overflow:hidden;background:var(--navy2);display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.heroBannerImage ? '<img src="'+esc(s.heroBannerImage)+'" style="width:100%;height:100%;object-fit:cover">' : icon('engineering',28)}</div>
-            <button type="button" class="btn btn-outline" onclick="document.getElementById('bannerFileInput').click()">${icon('upload',18)} رفع صورة</button>
-            <button type="button" class="btn btn-outline" onclick="removeSettingsImage('banner')">${icon('delete',18)} إزالة</button>
-            <input type="file" id="bannerFileInput" accept="image/*" style="display:none" onchange="handleSettingsImageUpload(event,'banner')">
-          </div>
-        </div>
-      </div>
-      <div class="card panel" style="max-width:760px;margin-top:16px">
-        <h3>روابط التواصل الاجتماعي</h3>
-        <div class="login-field"><label>فيسبوك</label><input id="setSocialFacebook" value="${esc(s.socialFacebook)}" placeholder="https://facebook.com/..."></div>
-        <div class="login-field"><label>X (تويتر)</label><input id="setSocialTwitter" value="${esc(s.socialTwitter)}" placeholder="https://x.com/..."></div>
-        <div class="login-field"><label>انستقرام</label><input id="setSocialInstagram" value="${esc(s.socialInstagram)}" placeholder="https://instagram.com/..."></div>
-        <div class="login-field"><label>لينكدإن</label><input id="setSocialLinkedin" value="${esc(s.socialLinkedin)}" placeholder="https://linkedin.com/..."></div>
-        <div class="login-field"><label>واتساب</label><input id="setSocialWhatsapp" value="${esc(s.socialWhatsapp)}" placeholder="https://wa.me/9665xxxxxxxx"></div>
-        <div class="login-field" style="margin-bottom:0"><label>يوتيوب</label><input id="setSocialYoutube" value="${esc(s.socialYoutube)}" placeholder="https://youtube.com/..."></div>
-      </div>
-      <div class="card panel" style="max-width:760px;margin-top:16px">
-        <h3>تصنيفات الدورات</h3>
-        <div id="categoriesContainer">${(s.courseCategories||[]).map(cat=>categoryRowHTML(cat)).join('')}</div>
-        <button type="button" class="btn btn-outline" onclick="addCategoryRow()" style="margin-top:8px">${icon('add',18)} إضافة تصنيف</button>
-      </div>
-      <div class="card panel" style="max-width:760px;margin-top:16px">
-        <h3>القسم الرئيسي (Hero)</h3>
-        <div class="login-field"><label>اسم الموقع</label><input id="setSiteName" value="${esc(s.siteName)}"></div>
-        <div class="login-field"><label>العنوان الرئيسي</label><input id="setHeroTitle" value="${esc(s.heroTitle)}"></div>
-        <div class="login-field"><label>الوصف الفرعي</label><textarea id="setHeroSubtitle" rows="3" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:10px;font-family:inherit">${esc(s.heroSubtitle)}</textarea></div>
-        <div class="login-field"><label>نص الزر الأساسي</label><input id="setHeroBtnPrimary" value="${esc(s.heroBtnPrimary)}"></div>
-        <div class="login-field" style="margin-bottom:0"><label>نص الزر الثانوي</label><input id="setHeroBtnSecondary" value="${esc(s.heroBtnSecondary)}"></div>
-      </div>
-      <div class="card panel" style="max-width:760px;margin-top:16px">
-        <h3>المميزات الأربع</h3>
-        ${[0,1,2,3].map(i=>`
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 0;${i<3?'border-bottom:1px solid var(--border)':''}">
-            <div class="login-field" style="margin-bottom:0"><label>عنوان الميزة ${i+1}</label><input id="setFeatTitle${i}" value="${esc(feats[i]?feats[i].title:'')}"></div>
-            <div class="login-field" style="margin-bottom:0"><label>وصف الميزة ${i+1}</label><input id="setFeatDesc${i}" value="${esc(feats[i]?feats[i].desc:'')}"></div>
-          </div>`).join('')}
-      </div>
-      <div class="card panel" style="max-width:760px;margin-top:16px">
-        <h3>معلومات التواصل والفوتر</h3>
-        <div class="login-field"><label>نبذة الفوتر</label><textarea id="setFooterAbout" rows="3" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:10px;font-family:inherit">${esc(s.footerAbout)}</textarea></div>
-        <div class="login-field"><label>رقم الهاتف</label><input id="setContactPhone" value="${esc(s.contactPhone)}"></div>
-        <div class="login-field"><label>البريد الإلكتروني</label><input id="setContactEmail" value="${esc(s.contactEmail)}"></div>
-        <div class="login-field" style="margin-bottom:0"><label>العنوان</label><input id="setContactAddress" value="${esc(s.contactAddress)}"></div>
-      </div>
-            <div class="card panel" style="max-width:760px;margin-top:16px">
-                    <h3>قسم الدورات المميزة (الصفحة الرئيسية)</h3>
-                            <div class="login-field"><label>عنوان القسم</label><input id="setFeaturedCoursesTitle" value="${esc(s.featuredCoursesTitle)}"></div>
-                                    <div class="login-field" style="margin-bottom:0"><label>الوصف الفرعي</label><input id="setFeaturedCoursesSubtitle" value="${esc(s.featuredCoursesSubtitle)}"></div>
-                                          </div>
-                                                <div class="card panel" style="max-width:760px;margin-top:16px">
-                                                        <h3>صفحة الدورات</h3>
-                                                                <div class="login-field"><label>عنوان الصفحة</label><input id="setCoursesPageTitle" value="${esc(s.coursesPageTitle)}"></div>
-                                                                        <div class="login-field" style="margin-bottom:0"><label>الوصف الفرعي</label><input id="setCoursesPageSubtitle" value="${esc(s.coursesPageSubtitle)}"></div>
-                                                                              </div>
-                                                                                    <div class="card panel" style="max-width:760px;margin-top:16px">
-                                                                                            <h3>حقوق النشر (أسفل الموقع)</h3>
-                                                                                                    <div class="login-field" style="margin-bottom:0"><label>نص حقوق النشر</label><input id="setFooterCopyrightText" value="${esc(s.footerCopyrightText)}"></div>
-                                                                                                          </div>
-                                                                                                          <button class="btn btn-primary" style="margin-top:16px" onclick="saveSiteSettings()">${icon('save',18)} حفظ التغييرات</button>
-      <a onclick="nav('home')" style="margin-inline-start:12px;color:var(--blue);font-size:13.5px">${icon('visibility',16)} معاينة الصفحة الرئيسية</a>
-    </div>
-  </div>`;
-}
-
-let pendingLogoImage = null, pendingBannerImage = null;
-function handleSettingsImageUpload(evt, kind){
-  const file = evt.target.files && evt.target.files[0];
-  if (!file) return;
-  const maxDim = kind === 'logo' ? 300 : 1200;
-  const reader = new FileReader();
-  reader.onload = function(e){
-    const img = new Image();
-    img.onload = function(){
-      let w = img.width, h = img.height;
-      if (w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
-      const canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-      if (kind === 'logo') pendingLogoImage = dataUrl; else pendingBannerImage = dataUrl;
-      const box = document.getElementById(kind === 'logo' ? 'logoPreviewBox' : 'bannerPreviewBox');
-      if (box) box.innerHTML = '<img src="'+dataUrl+'" style="width:100%;height:100%;object-fit:cover">';
-      showToast('تم اختيار الصورة، اضغط حفظ التغييرات لتطبيقها');
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-function removeSettingsImage(kind){
-  if (kind === 'logo') pendingLogoImage = ''; else pendingBannerImage = '';
-  const box = document.getElementById(kind === 'logo' ? 'logoPreviewBox' : 'bannerPreviewBox');
-  if (box) box.innerHTML = kind === 'logo' ? icon('school',28) : icon('engineering',28);
-  showToast('تمت إزالة الصورة، اضغط حفظ التغييرات لتطبيقها');
-}
-
-async function saveSiteSettings(){
-  const feats = [0,1,2,3].map(i => ({
-    icon: (siteSettings.features && siteSettings.features[i]) ? siteSettings.features[i].icon : 'star',
-    title: document.getElementById('setFeatTitle'+i).value,
-    desc: document.getElementById('setFeatDesc'+i).value
-  }));
-  const payload = {
-    siteName: document.getElementById('setSiteName').value,
-    heroTitle: document.getElementById('setHeroTitle').value,
-    heroSubtitle: document.getElementById('setHeroSubtitle').value,
-    heroBtnPrimary: document.getElementById('setHeroBtnPrimary').value,
-    heroBtnSecondary: document.getElementById('setHeroBtnSecondary').value,
-    features: feats,
-    footerAbout: document.getElementById('setFooterAbout').value,
-    contactPhone: document.getElementById('setContactPhone').value,
-    contactEmail: document.getElementById('setContactEmail').value,
-    contactAddress: document.getElementById('setContactAddress').value,
-    featuredCoursesTitle: document.getElementById('setFeaturedCoursesTitle').value,
-    featuredCoursesSubtitle: document.getElementById('setFeaturedCoursesSubtitle').value,
-    coursesPageTitle: document.getElementById('setCoursesPageTitle').value,
-    coursesPageSubtitle: document.getElementById('setCoursesPageSubtitle').value,
-    footerCopyrightText: document.getElementById('setFooterCopyrightText').value,
-    logoImage: (pendingLogoImage !== null ? pendingLogoImage : siteSettings.logoImage),
-    heroBannerImage: (pendingBannerImage !== null ? pendingBannerImage : siteSettings.heroBannerImage),
-    socialFacebook: document.getElementById('setSocialFacebook').value,
-    socialTwitter: document.getElementById('setSocialTwitter').value,
-    socialInstagram: document.getElementById('setSocialInstagram').value,
-    socialLinkedin: document.getElementById('setSocialLinkedin').value,
-    socialWhatsapp: document.getElementById('setSocialWhatsapp').value,
-    socialYoutube: document.getElementById('setSocialYoutube').value,
-    courseCategories: Array.from(document.querySelectorAll('#categoriesContainer .category-row')).map(row => {
-      const name = row.querySelector('.cat-name-input').value.trim();
-      const color = row.querySelector('.cat-color-input').value;
-      const key = row.getAttribute('data-key') || ('cat_' + Date.now() + '_' + Math.random().toString(36).slice(2,7));
-      return { key, name, color, bg: color + '22' };
-    }).filter(c => c.name)
-  };
-  try {
-    const data = await api('/admin/settings', { method:'PUT', body: JSON.stringify(payload) });
-    siteSettings = data.settings;
-    rebuildCats();
-    pendingLogoImage = null;
-    pendingBannerImage = null;
-    showToast('تم حفظ التغييرات بنجاح');
-  } catch(e) { showToast(e.message, true); }
-}
-
-async function viewInstructor(){
-  if (!requireRoleOrRedirect('instructor')) return `${header('instructor')}<div class="loading-block">جارِ التحويل...</div>`;
-  const [coursesData, scheduleData, progressData, activityData] = await Promise.all([
-    api('/instructor/my-courses'), api('/instructor/schedule'), api('/instructor/progress-summary'), api('/instructor/activity')
-  ]);
-  const myCourses = coursesData.courses;
-  const sessions = scheduleData.sessions;
-  const progress = progressData;
-  const activity = activityData.activity;
-
+function viewInstructor(){
+  const myCourses = [
+    {name:'الأتمتة الصناعية PLC',students:28},
+    {name:'إدارة المشاريع PMP',students:32},
+    {name:'التصميم الهندسي AutoCAD',students:24},
+    {name:'السلامة والصحة المهنية',students:18}
+  ];
+  const activity = [
+    'أتم محمد أحمد 5 دروس في دورة PLC منذ ساعة',
+    'حصل عبدالله سعيد على درجة 990 في اختبار PMP منذ 3 ساعات',
+    'خدر شارك في نقاش جديد منذ 5 ساعات'
+  ];
   return `
   <div class="dash-shell">
     ${sidebar('instructor','instructor')}
     <div class="dash-main">
       <div class="dash-topbar">
         <h2>لوحة التحكم - المدرب</h2>
-        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+        <div class="dash-user"><div class="avatar-circle">م.ع</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، م. محمد العتيبي</div></div></div>
       </div>
       <div class="three-col" style="margin-bottom:16px">
         <div class="card profile-panel">
-          <div class="avatar-circle">${initials(currentUser.name)}</div>
-          <div style="font-weight:700">${currentUser.name}</div>
-          <div style="color:var(--muted);font-size:12.5px">${currentUser.title||'مدرب معتمد'}</div>
-          <div style="color:var(--muted);font-size:12px;margin-top:4px">${currentUser.email}</div>
+          <div class="avatar-circle">م.ع</div>
+          <div style="font-weight:700">م. محمد العتيبي</div>
+          <div style="color:var(--muted);font-size:12.5px">مدرب معتمد</div>
+          <div style="color:var(--muted);font-size:12px;margin-top:4px">mohammed@tahseenmsarak.com</div>
+          <button class="btn btn-outline btn-sm btn-block" style="margin-top:12px">عرض الملف الشخصي</button>
         </div>
         <div class="card panel">
           <h3>دوراتي</h3>
-          ${myCourses.length ? `
           <table class="dt">
             <thead><tr><th>الدورة</th><th>المتدربون</th></tr></thead>
-            <tbody>${myCourses.map(c=>`<tr><td>${c.title}</td><td>${c.students}</td></tr>`).join('')}</tbody>
-          </table>` : `<div class="empty-hint">لا توجد دورات مرتبطة بك بعد</div>`}
+            <tbody>${myCourses.map(c=>`<tr><td>${c.name}</td><td>${c.students}</td></tr>`).join('')}</tbody>
+          </table>
         </div>
         <div class="card panel">
           <h3>جدولي</h3>
-          ${monthCalendar(sessions.map(s=>s.session_date))}
+          ${monthCalendar(true)}
         </div>
       </div>
       <div class="two-col">
@@ -1104,89 +741,214 @@ async function viewInstructor(){
           <h3>إجمالي التقدم</h3>
           <div style="display:flex;align-items:center;gap:24px">
             <div style="height:150px;width:150px;position:relative"><canvas id="progressChart"></canvas>
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">${progress.overallPct||0}%</div>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">78%</div>
             </div>
             <div style="flex:1">
-              <div class="legend-row"><span><span class="legend-dot" style="background:#2f5fdd"></span>ممتاز</span><b>${progress.breakdown.excellent}%</b></div>
-              <div class="legend-row"><span><span class="legend-dot" style="background:#0f9d78"></span>جيد</span><b>${progress.breakdown.good}%</b></div>
-              <div class="legend-row"><span><span class="legend-dot" style="background:#d97706"></span>متوسط</span><b>${progress.breakdown.average}%</b></div>
-              <div class="legend-row"><span><span class="legend-dot" style="background:#dc2626"></span>ضعيف</span><b>${progress.breakdown.weak}%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#2f5fdd"></span>ممتاز</span><b>45%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#0f9d78"></span>جيد</span><b>30%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#d97706"></span>متوسط</span><b>15%</b></div>
+              <div class="legend-row"><span><span class="legend-dot" style="background:#dc2626"></span>ضعيف</span><b>10%</b></div>
             </div>
           </div>
         </div>
         <div class="card panel">
           <h3>آخر الأنشطة</h3>
-          ${activity.length ? activity.map(a=>`<div class="activity-item"><div class="activity-dot"></div><div>${a}</div></div>`).join('') : `<div class="empty-hint">لا توجد أنشطة بعد</div>`}
+          ${activity.map(a=>`<div class="activity-item"><div class="activity-dot"></div><div>${a}</div></div>`).join('')}
         </div>
       </div>
     </div>
   </div>`;
 }
 
-async function viewTrainee(){
-  if (!requireRoleOrRedirect('trainee')) return `${header('trainee')}<div class="loading-block">جارِ التحويل...</div>`;
-  const [coursesData, certsData, notifsData, sessionData] = await Promise.all([
-    api('/trainee/my-courses'), api('/trainee/certificates'), api('/trainee/notifications'), api('/trainee/next-session')
-  ]);
-  const myCourses = coursesData.courses;
-  const certs = certsData.certificates;
-  const notifs = notifsData.notifications;
-  const session = sessionData.session;
-
+function viewTrainee(){
+  const myCourses = [
+    {name:'الأتمتة الصناعية PLC',pct:75},
+    {name:'إدارة المشاريع PMP',pct:60},
+    {name:'التصميم الهندسي AutoCAD',pct:40},
+    {name:'السلامة والصحة المهنية',pct:90}
+  ];
+  const notifs = [
+    {ic:'event_available',text:'تم تأكيد تسجيلك في جلسة PLC القادمة',time:'منذ ساعة'},
+    {ic:'workspace_premium',text:'تم إصدار شهادة جديدة لك',time:'منذ 3 أيام'},
+    {ic:'campaign',text:'خصم 20% على دورات القطاع الصناعي هذا الأسبوع',time:'منذ 5 أيام'}
+  ];
   return `
   <div class="dash-shell">
     ${sidebar('trainee','trainee')}
     <div class="dash-main">
       <div class="dash-topbar">
         <h2>لوحة التحكم - المتدرب</h2>
-        <div class="dash-user"><div class="avatar-circle">${initials(currentUser.name)}</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، ${currentUser.name}</div></div></div>
+        <div class="dash-user"><div class="avatar-circle">ع.ف</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، عبدالله الفهمي</div></div></div>
       </div>
       <div class="two-col" style="margin-bottom:16px">
         <div class="card panel">
           <h3>دوراتي المسجلة</h3>
-          ${myCourses.length ? myCourses.map(c=>`
+          ${myCourses.map(c=>`
             <div class="progress-row">
-              <div class="p-top"><span>${c.title}</span><b>${c.progress}%</b></div>
-              <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${c.progress}%"></div></div>
-              <div style="margin-top:6px;display:flex;gap:8px">
-                <button class="btn btn-outline btn-sm" onclick="bumpProgress(${c.enrollmentId}, ${Math.min(100,c.progress+10)})">${icon('trending_up',14)} تحديث التقدم</button>
-              </div>
-            </div>`).join('') : `<div class="empty-hint">لم تسجل في أي دورة بعد</div>`}
+              <div class="p-top"><span>${c.name}</span><b>${c.pct}%</b></div>
+              <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${c.pct}%"></div></div>
+            </div>`).join('')}
           <button class="btn btn-outline btn-sm" onclick="nav('courses')">${icon('add',16)} تصفح دورات جديدة</button>
         </div>
         <div class="card session-card">
           <h3>الجلسة القادمة</h3>
-          ${session ? `
-          <div class="session-badge">${icon('videocam',22)}<div><div style="font-weight:700;font-size:13.5px">${session.course_title}</div><div style="font-size:12.5px">${session.session_date} · ${session.start_time} - ${session.end_time}</div></div></div>
-          <button class="btn btn-primary btn-block" onclick="showToast('تم الانضمام إلى الجلسة')">${icon('login',18)} الانضمام للجلسة</button>` : `<div class="empty-hint">لا توجد جلسات قادمة مجدولة حالياً</div>`}
+          <div class="session-badge">${icon('videocam',22)}<div><div style="font-weight:700;font-size:13.5px">الأتمتة الصناعية PLC</div><div style="font-size:12.5px">الثلاثاء، 21 يوليو 2026 · 04:00 - 06:00م</div></div></div>
+          <button class="btn btn-primary btn-block" onclick="showToast('تم الانضمام إلى الجلسة')">${icon('login',18)} الانضمام للجلسة</button>
         </div>
       </div>
       <div class="two-col">
         <div class="card panel">
           <h3>شهاداتي</h3>
-          ${certs.length ? `<div class="three-col">${certs.map(c=>`
+          <div class="three-col">
             <div class="card cert-card">
               <div class="cert-icon">${icon('workspace_premium',26)}</div>
-              <div style="font-weight:700;font-size:13px">${c.title}</div>
-              <div style="color:var(--muted);font-size:12px">تاريخ الإصدار: ${c.issued_at.slice(0,10)}</div>
+              <div style="font-weight:700;font-size:13px">شهادة أساسيات السلامة المهنية</div>
+              <div style="color:var(--muted);font-size:12px">تاريخ الإصدار: 2026-06-15</div>
               <button class="btn btn-outline btn-sm btn-block">عرض الشهادة</button>
-            </div>`).join('')}</div>` : `<div class="empty-hint">أكمل إحدى دوراتك للحصول على شهادتك الأولى</div>`}
+            </div>
+          </div>
         </div>
         <div class="card panel">
           <h3>الإشعارات</h3>
-          ${notifs.length ? notifs.map(n=>`<div class="notif-item"><div class="notif-icon">${icon(n.icon,17)}</div><div><div>${n.text}</div><div style="color:var(--muted);font-size:11.5px">${n.created_at.slice(0,10)}</div></div></div>`).join('') : `<div class="empty-hint">لا توجد إشعارات جديدة</div>`}
+          ${notifs.map(n=>`<div class="notif-item"><div class="notif-icon">${icon(n.ic,17)}</div><div><div>${n.text}</div><div style="color:var(--muted);font-size:11.5px">${n.time}</div></div></div>`).join('')}
         </div>
       </div>
     </div>
   </div>`;
 }
 
-async function bumpProgress(enrollmentId, newPct){
-  try {
-    await api('/trainee/my-courses/' + enrollmentId + '/progress', { method:'PUT', body: JSON.stringify({ progress: newPct }) });
-    showToast(newPct >= 100 ? 'أحسنت! أكملت الدورة وحصلت على شهادة جديدة' : 'تم تحديث نسبة تقدمك');
+function viewAdminCourses(){
+  const [formData, setFormData] = [
+    {title:'',category:'science',price:0,level:'مبتدئ',duration_hours:20,description:'',instructor_id:1},
+    (data)=>{}
+  ];
+  return `
+  <div class="dash-shell">
+    ${sidebar('admin','admin-courses')}
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <h2>إدارة الدورات</h2>
+        <div class="dash-user"><div class="avatar-circle">م</div><div><div style="font-weight:700;font-size:13.5px">مرحباً، المدير</div></div></div>
+      </div>
+      <div class="two-col" style="margin-bottom:20px">
+        <div class="card panel">
+          <h3>إضافة دورة جديدة</h3>
+          <div class="login-field">
+            <label>اسم الدورة</label>
+            <input id="courseTitle" type="text" placeholder="اسم الدورة" value="">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="login-field">
+              <label>التصنيف</label>
+              <select id="courseCategory">
+                <option value="science">العلوم والهندسة</option>
+                <option value="industrial">القطاع الصناعي</option>
+                <option value="pm">إدارة المشاريع</option>
+                <option value="safety">السلامة المهنية</option>
+              </select>
+            </div>
+            <div class="login-field">
+              <label>المستوى</label>
+              <select id="courseLevel">
+                <option value="مبتدئ">مبتدئ</option>
+                <option value="متوسط">متوسط</option>
+                <option value="متقدم">متقدم</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="login-field">
+              <label>السعر (ر.س)</label>
+              <input id="coursePrice" type="number" placeholder="1000" value="1000">
+            </div>
+            <div class="login-field">
+              <label>عدد الساعات</label>
+              <input id="courseDuration" type="number" placeholder="20" value="20">
+            </div>
+          </div>
+          <div class="login-field">
+            <label>الوصف</label>
+            <textarea id="courseDesc" placeholder="وصف الدورة..." style="height:80px;border:1px solid var(--border);border-radius:8px;padding:10px;font-family:inherit"></textarea>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="addCourse()">${icon('add',18)} إضافة الدورة</button>
+        </div>
+        <div class="card panel">
+          <h3>إحصائيات الدورات</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="padding:12px;background:var(--blue-light);border-radius:8px">
+              <div style="color:var(--muted);font-size:12px">إجمالي الدورات</div>
+              <div style="font-size:24px;font-weight:800;color:var(--blue)">${COURSES.length}</div>
+            </div>
+            <div style="padding:12px;background:#d7f5ec;border-radius:8px">
+              <div style="color:var(--muted);font-size:12px">إجمالي المتدربين</div>
+              <div style="font-size:24px;font-weight:800;color:var(--teal)">${COURSES.reduce((s,c)=>s+c.students,0)}</div>
+            </div>
+            <div style="padding:12px;background:#fef3c7;border-radius:8px">
+              <div style="color:var(--muted);font-size:12px">الإيرادات المتوقعة</div>
+              <div style="font-size:24px;font-weight:800;color:var(--amber)">${money(COURSES.reduce((s,c)=>s+(c.price*c.students),0))}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card panel">
+        <h3>قائمة الدورات</h3>
+        <table class="dt">
+          <thead><tr><th>الاسم</th><th>التصنيف</th><th>المستوى</th><th>السعر</th><th>المتدربون</th><th>الإجراءات</th></tr></thead>
+          <tbody>
+            ${COURSES.map((c,i)=>`<tr>
+              <td>${c.title}</td>
+              <td><span class="badge" style="background:${CATS[c.cat].bg};color:${CATS[c.cat].color}">${CATS[c.cat].name}</span></td>
+              <td>${c.level}</td>
+              <td>${money(c.price)} ر.س</td>
+              <td>${c.students}</td>
+              <td style="display:flex;gap:6px">
+                <button class="btn btn-sm btn-outline" onclick="editCourse(${i})">${icon('edit',14)} تعديل</button>
+                <button class="btn btn-sm btn-outline" style="color:var(--red);border-color:#fee2e2" onclick="deleteCourse(${i})">${icon('delete',14)} حذف</button>
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>`;
+}
+
+function addCourse(){
+  const title = document.getElementById('courseTitle')?.value || '';
+  const category = document.getElementById('courseCategory')?.value || 'science';
+  const level = document.getElementById('courseLevel')?.value || 'مبتدئ';
+  const price = parseInt(document.getElementById('coursePrice')?.value) || 1000;
+  const duration = parseInt(document.getElementById('courseDuration')?.value) || 20;
+  const desc = document.getElementById('courseDesc')?.value || '';
+
+  if(!title.trim()) return showToast('أدخل اسم الدورة');
+
+  const newCourse = {
+    id: Math.max(...COURSES.map(c=>c.id))+1,
+    title, cat: category, price, level, duration_hours: duration,
+    instructor: 'م. محمد العتيبي', students: 0, rating: 4.7,
+    icon: 'menu_book', description: desc
+  };
+
+  COURSES.push(newCourse);
+  document.getElementById('courseTitle').value = '';
+  document.getElementById('coursePrice').value = '1000';
+  document.getElementById('courseDuration').value = '20';
+  document.getElementById('courseDesc').value = '';
+  showToast('تمت إضافة الدورة بنجاح');
+  render();
+}
+
+function editCourse(idx){
+  showToast('سيتم إضافة خاصية التعديل قريباً');
+}
+
+function deleteCourse(idx){
+  if(confirm('هل تريد حذف هذه الدورة؟')) {
+    COURSES.splice(idx, 1);
+    showToast('تم حذف الدورة بنجاح');
     render();
-  } catch(e) { showToast(e.message, true); }
+  }
 }
 
 const views = {
@@ -1195,7 +957,7 @@ const views = {
   courseDetail: viewCourseDetail,
   login: viewLogin,
   admin: viewAdmin,
-  adminSettings: viewAdminSettings,
+  'admin-courses': viewAdminCourses,
   instructor: viewInstructor,
   trainee: viewTrainee
 };
@@ -1204,71 +966,61 @@ function destroyCharts(){
   Object.values(charts).forEach(ch=>{ if(ch) ch.destroy(); });
 }
 
-async function initCharts(){
+function initCharts(){
   destroyCharts();
   if(state.view==='admin'){
-    try {
-      const rev = await api('/admin/revenue-monthly');
-      const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-      const labels = rev.months.map(m => { const parts=m.ym.split('-'); return monthNames[Number(parts[1])-1]; });
-      const values = rev.months.map(m => m.total);
-      const revCtx = document.getElementById('revenueChart');
-      if(revCtx){
-        charts.rev = new Chart(revCtx, {
-          type:'line',
-          data:{ labels: labels.length?labels:['لا توجد بيانات'], datasets:[{ data: values.length?values:[0], borderColor:'#2f5fdd', backgroundColor:'rgba(47,95,221,.1)', fill:true, tension:.35, pointRadius:4, pointBackgroundColor:'#2f5fdd' }] },
-          options:{ plugins:{legend:{display:false}}, scales:{y:{ticks:{callback:v=>(v/1000)+'k'}, grid:{color:'#eef0f6'}}, x:{grid:{display:false}}}, responsive:true, maintainAspectRatio:false }
-        });
-      }
-    } catch(e) {}
-    const distData = await api('/admin/category-distribution').catch(()=>({distribution:[]}));
-    const order = Object.keys(CATS);
-    const colors = order.map(k => CATS[k].color);
-    const dMap = {};
-    distData.distribution.forEach(d=>dMap[d.category]=d.pct);
+    const revCtx = document.getElementById('revenueChart');
+    if(revCtx){
+      charts.rev = new Chart(revCtx, {
+        type:'line',
+        data:{
+          labels:['فبراير','مارس','أبريل','مايو','يونيو','يوليو'],
+          datasets:[{
+            data:[62000,58000,71000,89000,102000,156780],
+            borderColor:'#2f5fdd',
+            backgroundColor:'rgba(47,95,221,.1)',
+            fill:true, tension:.35, pointRadius:4, pointBackgroundColor:'#2f5fdd'
+          }]
+        },
+        options:{
+          plugins:{legend:{display:false}},
+          scales:{y:{ticks:{callback:v=>(v/1000)+'k'}, grid:{color:'#eef0f6'}}, x:{grid:{display:false}}},
+          responsive:true, maintainAspectRatio:false
+        }
+      });
+    }
     const catCtx = document.getElementById('catChart');
     if(catCtx){
       charts.cat = new Chart(catCtx, {
         type:'doughnut',
-        data:{ labels: order.map(k=>CATS[k].name), datasets:[{ data: order.map(k=>dMap[k]||0), backgroundColor: colors, borderWidth:0 }] },
+        data:{
+          labels:['العلوم والهندسة','القطاع الصناعي','إدارة المشاريع','السلامة المهنية'],
+          datasets:[{data:[40,30,20,10], backgroundColor:['#2f5fdd','#0f9d78','#d97706','#7c3aed'], borderWidth:0}]
+        },
         options:{plugins:{legend:{display:false}}, cutout:'70%', responsive:true, maintainAspectRatio:false}
       });
     }
   }
   if(state.view==='instructor'){
-    const progress = await api('/instructor/progress-summary').catch(()=>null);
     const pCtx = document.getElementById('progressChart');
-    if(pCtx && progress){
+    if(pCtx){
       charts.prog = new Chart(pCtx, {
         type:'doughnut',
-        data:{ labels:['ممتاز','جيد','متوسط','ضعيف'], datasets:[{data:[progress.breakdown.excellent,progress.breakdown.good,progress.breakdown.average,progress.breakdown.weak], backgroundColor:['#2f5fdd','#0f9d78','#d97706','#dc2626'], borderWidth:0}] },
+        data:{ labels:['ممتاز','جيد','متوسط','ضعيف'], datasets:[{data:[45,30,15,10], backgroundColor:['#2f5fdd','#0f9d78','#d97706','#dc2626'], borderWidth:0}] },
         options:{plugins:{legend:{display:false}}, cutout:'72%', responsive:true, maintainAspectRatio:false}
       });
     }
   }
 }
 
-let renderToken = 0;
-async function render(){
-  const myToken = ++renderToken;
+function render(){
   const app = document.getElementById('app');
-  app.innerHTML = header(state.view) + `<div class="loading-block"><span class="material-symbols-outlined spin" style="font-size:30px">progress_activity</span><div style="margin-top:10px">جاري التحميل...</div></div>`;
-  try {
-    const html = await (views[state.view] ? views[state.view]() : viewHome());
-    if (myToken !== renderToken) return;
-    app.innerHTML = html;
-    if(state.view==='courses') setTimeout(()=>renderCoursesGrid(), 50);
-    setTimeout(initCharts, 50);
-  } catch(e) {
-    if (myToken !== renderToken) return;
-    app.innerHTML = header(state.view) + `<div class="container"><div class="loading-block">${icon('error',30)}<div style="margin-top:10px">${e.message||'تعذر تحميل البيانات، تحقق من اتصال الخادم'}</div></div></div>`;
-  }
+  app.innerHTML = views[state.view] ? views[state.view]() : viewHome();
+  if(state.view==='courses') renderCoursesGrid();
+  setTimeout(initCharts, 50);
 }
 
-(async function boot(){
-  await loadSettings();
-  render();
-})();
+render();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script></body>
+</body>
 </html>

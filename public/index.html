@@ -1257,7 +1257,7 @@ async function render(){
     const html = await (views[state.view] ? views[state.view]() : viewHome());
     if (myToken !== renderToken) return;
     app.innerHTML = html;
-    if(state.view==='courses') renderCoursesGrid();
+    if(state.view==='courses') setTimeout(()=>renderCoursesGrid(), 50);
     initCharts();
   } catch(e) {
     if (myToken !== renderToken) return;

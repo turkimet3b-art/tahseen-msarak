@@ -1258,7 +1258,7 @@ async function render(){
     if (myToken !== renderToken) return;
     app.innerHTML = html;
     if(state.view==='courses') setTimeout(()=>renderCoursesGrid(), 50);
-    initCharts();
+    setTimeout(initCharts, 50);
   } catch(e) {
     if (myToken !== renderToken) return;
     app.innerHTML = header(state.view) + `<div class="container"><div class="loading-block">${icon('error',30)}<div style="margin-top:10px">${e.message||'تعذر تحميل البيانات، تحقق من اتصال الخادم'}</div></div></div>`;

@@ -15,38 +15,35 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-// ✅ SAFE SETUP - بدون expose البيانات
+// Setup endpoint
 app.post('/api/setup/init-demo', (req, res) => {
   const key = req.headers['x-setup-key'];
-  
-  // تحقق من المفتاح
+
   if (key !== process.env.DEMO_INIT_KEY) {
-    return res.status(403).json({ error: 'مفتاح غير صالح' });
+    return res.status(403).json({ error: 'Invalid key' });
   }
 
-  console.log('🌱 إنشاء مستخدمي الديمو...');
-
   const demoUsers = [
-    { 
-      name: 'مدير النظام', 
-      email: process.env.ADMIN_EMAIL, 
-      password: process.env.ADMIN_PASSWORD, 
-      role: 'admin', 
-      title: 'مدير' 
+    {
+      name: 'Admin User',
+      email: process.env.ADMIN_EMAIL || 'admin@tahseen.com',
+      password: process.env.ADMIN_PASSWORD || 'admin123',
+      role: 'admin',
+      title: 'Admin'
     },
-    { 
-      name: 'محمد العتيبي', 
-      email: process.env.INSTRUCTOR_EMAIL, 
-      password: process.env.INSTRUCTOR_PASSWORD, 
-      role: 'instructor', 
-      title: 'مدرب' 
+    {
+      name: 'Instructor User',
+      email: process.env.INSTRUCTOR_EMAIL || 'instructor@tahseen.com',
+      password: process.env.INSTRUCTOR_PASSWORD || 'instructor123',
+      role: 'instructor',
+      title: 'Instructor'
     },
-    { 
-      name: 'عبدالله الفهمي', 
-      email: process.env.TRAINEE_EMAIL, 
-      password: process.env.TRAINEE_PASSWORD, 
-      role: 'trainee', 
-      title: null 
+    {
+      name: 'Trainee User',
+      email: process.env.TRAINEE_EMAIL || 'trainee@tahseen.com',
+      password: process.env.TRAINEE_PASSWORD || 'trainee123',
+      role: 'trainee',
+      title: null
     }
   ];
 
@@ -58,7 +55,6 @@ app.post('/api/setup/init-demo', (req, res) => {
       const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(user.email);
 
       if (existing) {
-        console.log(`⏭️  موجود: ${user.email}`);
         skipped++;
         return;
       }
@@ -68,46 +64,51 @@ app.post('/api/setup/init-demo', (req, res) => {
         'INSERT INTO users (name, email, password_hash, role, title, phone) VALUES (?, ?, ?, ?, ?, ?)'
       ).run(user.name, user.email, hash, user.role, user.title, '966501234567');
 
-      console.log(`✅ تم: ${user.email}`);
       created++;
     });
 
-    // ⚠️ لا نرجع البيانات الحساسة!
     res.json({
       success: true,
-      message: `✅ تم إنشاء ${created} مستخدم (تخطي ${skipped})`,
-      hint: 'استخدم بيانات الدخول من متغيرات البيئة'
+      message: `Created ${created} users, skipped ${skipped}`
     });
 
   } catch(error) {
-    console.error('❌ خطأ:', error.message);
-    res.status(500).json({ error: 'خطأ في الإنشاء' });
+    console.error('Setup error:', error.message);
+    res.status(500).json({ error: error.message });
   }
 });
 
-// ✅ API Routes
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/trainee', traineeRoutes);
 app.use('/api/instructor', instructorRoutes);
 app.use('/api/admin', adminRoutes);
 
-// ✅ Settings
+// Settings endpoint
 app.get('/api/settings', (req, res) => {
-    const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
-    res.json({ settings: row ? JSON.parse(row.data) : {} });
+    try {
+      const row = db.prepare('SELECT data FROM settings WHERE id = 1').get();
+      res.json({ settings: row ? JSON.parse(row.data) : {} });
+    } catch(e) {
+      res.json({ settings: {} });
+    }
 });
 
-// ✅ Health Check
-app.get('/api/health', (req, res) => res.json({ ok: true }));
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ ok: true, timestamp: new Date().toISOString() });
+});
 
-// ✅ Static Files
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Fallback to index.html
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ الخادم يعمل على المنفذ ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
